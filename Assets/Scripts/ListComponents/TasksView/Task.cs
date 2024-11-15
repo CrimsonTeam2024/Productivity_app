@@ -1,5 +1,7 @@
 public class Task : BaseListItem
 {
-    public float TimeCost;
-    public TaskTier TaskTier;
+    uint _timeCost; // seconds
+    public uint TimeCost { get { return _timeCost; } set { _timeCost = value; } } 
+    TaskTier _taskTier;
+    public TaskTier TaskTier { get { return _taskTier; } set { _taskTier = value; } } 
 }
