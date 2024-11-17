@@ -1,13 +1,13 @@
 using UnityEngine;
 
 // This class
-public class TaskController : ListItemController<Task>
+public class TasksController : ListController<Task>
 {
-    TaskUIController taskUIController;
+    TasksUIController TasksUIController;
 
     void Awake()
     {
-        taskUIController = GetComponent<TaskUIController>();        
+        TasksUIController = GetComponent<TasksUIController>();        
     }
 
     public override void ActivateListItem()
@@ -26,6 +26,6 @@ public class TaskController : ListItemController<Task>
 
     public override void SelectListItem()
     {
-        taskUIController.ShowDetailsPanel(selectedListItem);
+        TasksUIController.ShowDetailsPanel(selectedListItem);
     }
 }

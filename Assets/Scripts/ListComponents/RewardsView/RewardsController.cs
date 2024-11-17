@@ -1,14 +1,15 @@
 using UnityEngine;
 
 // This class
-public class RewardController : ListItemController<Reward>
+public class RewardsController : ListController<Reward>
 {
-    RewardUIController rewardUIController;
+    RewardsUIController rewardsUIController;
 
     void Awake()
     {
-        rewardUIController = GetComponent<RewardUIController>();        
+        rewardsUIController = GetComponent<RewardsUIController>();        
     }
+    
     public override void ActivateListItem()
     {
         // Check if user has enough coins to unlock reward
@@ -27,6 +28,6 @@ public class RewardController : ListItemController<Reward>
 
     public override void SelectListItem()
     {
-        rewardUIController.ShowDetailsPanel(selectedListItem);
+        rewardsUIController.ShowDetailsPanel(selectedListItem);
     }
 }

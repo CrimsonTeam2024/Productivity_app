@@ -1,4 +1,4 @@
-public class RewardUIController : ListItemUIController
+public class RewardsUIController : ListUIController
 {
     public override void FillDetails(BaseListItem reward)
     {
