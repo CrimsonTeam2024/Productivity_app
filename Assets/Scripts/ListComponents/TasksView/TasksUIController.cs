@@ -1,4 +1,4 @@
-public class TaskUIController : ListItemUIController
+public class TasksUIController : ListUIController
 {
     public override void FillDetails(BaseListItem task)
     {

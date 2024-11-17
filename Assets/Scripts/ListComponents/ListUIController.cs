@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
-public abstract class ListItemUIController : MonoBehaviour
+public abstract class ListUIController : MonoBehaviour
 {
     public GameObject detailsPrefab; // List item details GameObject "prefab" or template
     GameObject listItemDetails; // The actual instantiated list item details GameObject

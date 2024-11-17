@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 // This class
-public abstract class ListItemController<T> : MonoBehaviour where T : BaseListItem
+public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
 {
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
     public GameObject detailObject;
-    ListItemUIController uiController;
+    ListUIController uiController;
 
 
     // What the item does when "started"
