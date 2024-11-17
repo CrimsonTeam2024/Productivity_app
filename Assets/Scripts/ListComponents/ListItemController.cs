@@ -5,33 +5,24 @@ using UnityEngine.EventSystems;
 public abstract class ListItemController<T> : MonoBehaviour where T : BaseListItem
 {
     public T selectedListItem; // The currently selected list item
-    public UIManager uiManager;
     public bool toggleDetail = false;
     public GameObject detailObject;
+    ListItemUIController uiController;
 
 
     // What the item does when "started"
-    public abstract void Init();
+    public abstract void ActivateListItem();
 
     // What happens when user completes list item
-    public abstract void Complete();
+    public abstract void CompleteListItem();
 
-    // Reveal list item details view
-    public void RevealDetails()
-    {
-        if (!toggleDetail)
-            detailObject = uiManager.ShowDetails<T>(selectedListItem);
-        else
-            uiManager.HideDetails(detailObject);
-        
-        toggleDetail = !toggleDetail;
-        Canvas.ForceUpdateCanvases();
-    }
+    // Reveal list item details view on list item select
+    public abstract void SelectListItem();
     
     // Hide list item details view
-    public void HideDetails()
+    public void DeselectListItem()
     {
-        uiManager.HideDetails(detailObject);
+        uiController.HideDetails();
     }
 
 
