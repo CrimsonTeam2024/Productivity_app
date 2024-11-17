@@ -6,7 +6,6 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
 {
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
-    public GameObject detailObject;
     ListUIController uiController;
 
 
@@ -23,6 +22,7 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
     public void DeselectListItem()
     {
         uiController.HideDetails();
+        selectedListItem = null;
     }
 
 
