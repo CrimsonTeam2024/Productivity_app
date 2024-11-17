@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class BaseList<T> : MonoBehaviour
 {
-    protected UIManager uiManager;
     [SerializeField] protected List<T> _items = new List<T>();
 
     void AddItem(T item)

@@ -3,7 +3,14 @@ using UnityEngine;
 // This class
 public class TaskController : ListItemController<Task>
 {
-    public override void Init()
+    TaskUIController taskUIController;
+
+    void Awake()
+    {
+        taskUIController = GetComponent<TaskUIController>();        
+    }
+
+    public override void ActivateListItem()
     {
         // Opens village manager view and prompts to select build tasks
 
@@ -12,8 +19,13 @@ public class TaskController : ListItemController<Task>
         // If activate chosen, create focus session based on task data
     }
 
-    public override void Complete()
+    public override void CompleteListItem()
     {
         // Reward with coins and xp
+    }
+
+    public override void SelectListItem()
+    {
+        taskUIController.ShowDetailsPanel(selectedListItem);
     }
 }
