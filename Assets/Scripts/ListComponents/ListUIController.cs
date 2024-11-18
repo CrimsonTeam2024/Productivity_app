@@ -6,7 +6,9 @@ using UnityEngine;
 public abstract class ListUIController : MonoBehaviour
 {
     public GameObject detailsPrefab; // List item details GameObject "prefab" or template
-    GameObject listItemDetails; // The actual instantiated list item details GameObject
+    public GameObject newListItemPrefab;
+    GameObject listItemDetailsPanel; // The actual instantiated list item details GameObject
+    GameObject newListItemPanel;
 
 
     public void ShowDetailsPanel(BaseListItem listItem)
@@ -14,7 +16,7 @@ public abstract class ListUIController : MonoBehaviour
         Transform listItemTransform = listItem.GetComponentInParent<Transform>();
         // TODO: Manipulate transform position such that details panel is well positioned
         
-        listItemDetails = Instantiate(detailsPrefab, listItemTransform);
+        listItemDetailsPanel = Instantiate(detailsPrefab, listItemTransform);
         // TODO: After instantiation, animate the reward details screen pop up
     }
 
@@ -22,10 +24,17 @@ public abstract class ListUIController : MonoBehaviour
     // Method to hide details
     public void HideDetails()
     {
-        if (listItemDetails != null)
+        if (listItemDetailsPanel != null)
         {
-            Destroy(listItemDetails);
+            Destroy(listItemDetailsPanel);
         }
+    }
+
+
+    public void ShowCreateListItemPanel()
+    {
+        newListItemPanel = Instantiate(newListItemPrefab);
+        // TODO: After instantiation, animate the reward details screen pop up
     }
     
 
