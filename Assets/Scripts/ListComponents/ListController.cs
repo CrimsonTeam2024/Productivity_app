@@ -7,6 +7,7 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
     ListUIController uiController;
+    public GameManager gameManager;
 
 
     // What the item does when "started"
