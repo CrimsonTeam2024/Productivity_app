@@ -1,13 +1,21 @@
+using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 // This class
-public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
+public abstract class ListController<T> : MonoBehaviour where T : ListItemData
 {
+    [SerializeField] List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
-    ListUIController uiController;
+    ListUIController<T> uiController;
     public GameManager gameManager;
+
+    void Start()
+    {
+        uiController = GetComponent<ListUIController<T>>();
+    }
 
 
     // What the item does when "started"
@@ -26,10 +34,16 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
         selectedListItem = null;
     }
 
+    public void CreateNewListItem()
+    {
+        T listItem = uiController.CreateNewListItem();
+        AddListItem(listItem);
+    }
 
-    public void AddListItem(T itemData)
+    public void AddListItem(T listItem)
     {
         // TODO: Add list item
+        list.Add(listItem);
     }
 
 
@@ -39,7 +53,7 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
     }
 
 
-    public void EditListItem(T newItemData)
+    public void EditListItem(T newlistItem)
     {
         // TODO: Edit list item
     }
@@ -51,7 +65,7 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
     }
 
 
-    public void SelectListItem(BaseEventData data)
+    public void SelectListItem(BaseEventData data) // TODO: fix
     {
         
         // Cast the BaseEventData to PointerEventData to get access to pointer details
@@ -69,7 +83,7 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
             if (listItem != null)
             {
                 selectedListItem = listItem;
-                Debug.Log("Selected item set to: " + selectedListItem.name);
+                Debug.Log("Selected item set to: " + selectedListItem.ItemName);
             }
             else
             {
