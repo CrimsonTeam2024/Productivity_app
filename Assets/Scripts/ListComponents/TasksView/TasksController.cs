@@ -3,7 +3,7 @@ using System.Xml.XPath;
 using UnityEngine;
 
 // This class
-public class TasksController : ListController<Task>
+public class TasksController : ListController<TaskData>
 {
     TasksUIController TasksUIController;
 

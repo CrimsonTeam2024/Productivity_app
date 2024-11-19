@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // This class
-public class RewardsController : ListController<Reward>
+public class RewardsController : ListController<RewardData>
 {
     RewardsUIController rewardsUIController;
 

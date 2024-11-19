@@ -1,27 +1,22 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
-public abstract class ListUIController<T> : MonoBehaviour where T : BaseListItem
+public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
 {
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
-    ListController<T> listController;
 
     void Awake() {
         // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
-
-        listController = GetComponent<ListController<T>>();
     }
 
 
-    public void ShowDetailsPanel(BaseListItem listItem)
+    public void ShowDetailsPanel(ListItemData listItem)
     {
-        Transform listItemTransform = listItem.GetComponentInParent<Transform>();
         // TODO: Manipulate transform position such that details panel is well positioned
         
         listItemDetailsPanel.SetActive(true);
@@ -54,13 +49,13 @@ public abstract class ListUIController<T> : MonoBehaviour where T : BaseListItem
     }
 
 
-    public void CreateNewListItem()
+    public T CreateNewListItem()
     {
         if (!newListItemPanel.activeInHierarchy)
         {
             Debug.LogError("Cannot create new list item because "
                             + "the UI view responsible for this is not active in the heirarchy.");
-            return;
+            return null;
         }
 
         string itemName = string.Empty;
@@ -88,14 +83,13 @@ public abstract class ListUIController<T> : MonoBehaviour where T : BaseListItem
         }
 
         T listItem = ConvertInputFieldsToListItem(placeholderToTextMap);
-
-        // Create new Task here
-        listController.AddListItem(listItem);
+        
+        return listItem;
     }
 
 
     protected abstract T ConvertInputFieldsToListItem(Dictionary<string, string> dict);
     
 
-    public abstract void FillDetails(BaseListItem listItem);
+    public abstract void FillDetails(ListItemData listItem);
 }
