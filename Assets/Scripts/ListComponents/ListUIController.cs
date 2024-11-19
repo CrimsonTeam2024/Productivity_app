@@ -1,14 +1,16 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
 public abstract class ListUIController : MonoBehaviour
 {
-    public GameObject detailsPrefab; // List item details GameObject "prefab" or template
-    public GameObject newListItemPrefab;
-    GameObject listItemDetailsPanel; // The actual instantiated list item details GameObject
-    GameObject newListItemPanel;
+    public GameObject listItemDetailsPanel;
+    public GameObject newListItemPanel;
+
+    void Awake() {
+        // Hide the action specific ui panels
+        listItemDetailsPanel.SetActive(false);
+        newListItemPanel.SetActive(false);
+    }
 
 
     public void ShowDetailsPanel(BaseListItem listItem)
@@ -16,7 +18,7 @@ public abstract class ListUIController : MonoBehaviour
         Transform listItemTransform = listItem.GetComponentInParent<Transform>();
         // TODO: Manipulate transform position such that details panel is well positioned
         
-        listItemDetailsPanel = Instantiate(detailsPrefab, listItemTransform);
+        listItemDetailsPanel.SetActive(true);
         // TODO: After instantiation, animate the reward details screen pop up
     }
 
@@ -33,7 +35,14 @@ public abstract class ListUIController : MonoBehaviour
 
     public void ShowCreateListItemPanel()
     {
-        newListItemPanel = Instantiate(newListItemPrefab);
+        newListItemPanel.SetActive(true);
+        // TODO: After instantiation, animate the reward details screen pop up
+    }
+
+
+    public void HideCreateListItemPanel()
+    {
+        newListItemPanel.SetActive(false);
         // TODO: After instantiation, animate the reward details screen pop up
     }
     
