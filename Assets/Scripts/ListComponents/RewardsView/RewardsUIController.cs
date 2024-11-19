@@ -1,8 +1,16 @@
-public class RewardsUIController : ListUIController
+using System.Collections.Generic;
+
+public class RewardsUIController : ListUIController<RewardData>
 {
-    public override void FillDetails(BaseListItem reward)
+    // This is a work around for not being able to do new T() for generics.
+    protected override RewardData ConvertInputFieldsToListItem(Dictionary<string, string> dict)
     {
-        reward = (Reward)reward;
+        return new RewardData(dict);
+    }
+
+    public override void FillDetails(ListItemData reward)
+    {
+        reward = (RewardData)reward;
 
         // TODO: Make a reward details fill function 
     }
