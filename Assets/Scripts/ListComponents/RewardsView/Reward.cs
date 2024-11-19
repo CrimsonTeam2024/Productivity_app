@@ -1,15 +1,11 @@
-public class Reward : BaseListItem
+using UnityEngine;
+
+public class Reward : MonoBehaviour
 {
-    uint _rewardCost;
-    uint RewardCost { get { return _rewardCost; } set { _rewardCost = value; } } // Coin cost
+    public RewardData rewardData;
 
-    RewardTier _tier;
-    public RewardTier Tier { get { return _tier; } set { _tier = value; } }
-
-    public Reward(string name, string description, uint cost)
+    public void Delete()
     {
-        ItemName = name;
-        ItemDescription = description;
-        RewardCost = cost;
+        Destroy(gameObject);
     }
 }
