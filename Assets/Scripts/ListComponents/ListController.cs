@@ -17,7 +17,6 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
         uiController = GetComponent<ListUIController<T>>();
     }
 
-
     // What the item does when "started"
     public abstract void ActivateListItem();
 
@@ -65,7 +64,7 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public void EditListItem(T newlistItem)
+    public void EditListItem(T newItemData)
     {
         // TODO: Edit list item
     }
