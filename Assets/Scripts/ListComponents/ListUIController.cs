@@ -7,6 +7,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
 {
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
+    public GameObject listItemPrefab; // The actual list item prefab
 
     void Awake() {
         // Hide the action specific ui panels
@@ -85,6 +86,12 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
         T listItem = ConvertInputFieldsToListItem(placeholderToTextMap);
         
         return listItem;
+    }
+
+
+    public void InstantiateNewListItem(T listItemData)
+    {
+        Instantiate(listItemPrefab, transform);
     }
 
 
