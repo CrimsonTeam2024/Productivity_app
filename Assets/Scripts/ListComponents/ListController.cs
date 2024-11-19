@@ -27,25 +27,25 @@ public abstract class ListController<T> : MonoBehaviour where T : BaseListItem
     }
 
 
-    public void Add(T itemData)
+    public void AddListItem(T itemData)
     {
         // TODO: Add list item
     }
 
 
-    public void Delete()
+    public void DeleteListItem()
     {
         // TODO: Delete list item
     }
 
 
-    public void Edit(T newItemData)
+    public void EditListItem(T newItemData)
     {
         // TODO: Edit list item
     }
 
 
-    public void Duplicate()
+    public void DuplicateListItem()
     {
         // TODO: Duplicate list item
     }
