@@ -38,6 +38,12 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
     {
         T listItem = uiController.CreateNewListItem();
         AddListItem(listItem);
+        uiController.HideCreateListItemPanel();
+    }
+
+    public void CancelCreateNewListItem()
+    {
+        uiController.HideCreateListItemPanel();
     }
 
     public void AddListItem(T listItem)
