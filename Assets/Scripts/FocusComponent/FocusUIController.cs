@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class FocusUIController : MonoBehaviour
 {
-    public static FocusUIController Instance;
-
     public GameObject focusTimerObject;
+    
+    // TODO: Consider whether there is a better way of getting focusTimerText, 
+    //       than defining it in the Unity inspector
     [SerializeField] TMP_Text focusTimerText;
-    GameObject focusGameobject;
     Timer _timer;
     bool isTimerShown;
 
@@ -23,6 +23,12 @@ public class FocusUIController : MonoBehaviour
         }
     }
 
+    // TODO: Consider a better way of doing this.
+    //       Maybe we can create tick events, 
+    //       rather than updating this logic once every frame
+    //       even though we know we will need to update this string 
+    //       only once every second. The Update method executes every frame, 
+    //       so potentially hundreds of times a second. This is inefficient.
     void Update()
     {
         if (focusTimerText != null && isTimerShown)
@@ -31,8 +37,9 @@ public class FocusUIController : MonoBehaviour
         }
     }
 
+    // Method is triggered when OnTimerEnd event triggers
     public void EndFocusTimer()
     {
-        // TODO
+        // TODO: Define what the UI should do when the timer ends.
     }
 }
