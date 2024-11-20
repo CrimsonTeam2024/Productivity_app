@@ -13,6 +13,7 @@ public class TasksController : ListController<TaskData>
         TasksUIController = GetComponent<TasksUIController>();        
     }
 
+    // TODO: Implement
     public override void ActivateListItem()
     {
         // Opens village manager view and prompts to select build tasks
@@ -22,7 +23,7 @@ public class TasksController : ListController<TaskData>
         // If activate chosen, create focus session based on task data
     }
 
-
+    // TODO: Figure out how list items 
     public override void CompleteListItem()
     {
         // Provisional solution.

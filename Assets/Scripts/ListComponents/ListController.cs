@@ -78,7 +78,6 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
 
     public void SelectListItem(BaseEventData data) // TODO: fix
     {
-        
         // Cast the BaseEventData to PointerEventData to get access to pointer details
         PointerEventData pointerData = data as PointerEventData;
         

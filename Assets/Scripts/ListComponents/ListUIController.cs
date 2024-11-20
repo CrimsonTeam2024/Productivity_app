@@ -38,7 +38,8 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
     public void ShowCreateListItemPanel()
     {
         newListItemPanel.SetActive(true);
-        // TODO: After instantiation, animate the reward details screen pop up
+        // TODO: After instantiation, animate the list item details screen pop up
+        //       so that it looks good. This is strongly tied with design.
     }
 
 
@@ -65,6 +66,8 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
         TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
         Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();
         
+        // Generate a dictionary of input field names and their values, 
+        // and match them to Task or Reward properties
         foreach (TMP_InputField inputField in inputFields)
         {
             if (inputField.placeholder is TMP_Text placeholderText)

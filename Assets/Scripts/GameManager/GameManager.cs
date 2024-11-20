@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
 
+// TODO: This needs to be expanded to include the oracle system
 public class GameManager : MonoBehaviour
 {
+    // TODO: Consider separate classes for the following values
     public double xp;
     public uint coins;
 
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     void LoadSavedGameState()
     {
+        // TODO: Implement this function
         throw new NotImplementedException();
     }
 }
