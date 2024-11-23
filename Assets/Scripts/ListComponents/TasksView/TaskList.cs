@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class TaskList : BaseList<TaskData>
+public class TaskList : BaseList<Task>
 {
     
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 // This class
-public class TasksController : ListController<TaskData>
+public class TasksController : ListController<Task>
 {
     TasksUIController TasksUIController;
 
@@ -61,6 +61,6 @@ public class TasksController : ListController<TaskData>
 
     public override void SelectListItem()
     {
-        TasksUIController.ShowDetailsPanel(selectedListItem);
+        TasksUIController.ShowDetailsPanel();
     }
 }

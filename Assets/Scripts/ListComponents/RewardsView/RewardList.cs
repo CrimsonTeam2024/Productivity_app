@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RewardList : BaseList<RewardData>
+public class RewardList : BaseList<Reward>
 {
     
 }

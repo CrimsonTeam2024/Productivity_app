@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-public class RewardsController : ListController<RewardData>
+public class RewardsController : ListController<Reward>
 {
     RewardsUIController rewardsUIController;
 
@@ -32,6 +32,6 @@ public class RewardsController : ListController<RewardData>
 
     public override void SelectListItem()
     {
-        rewardsUIController.ShowDetailsPanel(selectedListItem);
+        rewardsUIController.ShowDetailsPanel();
     }
 }
