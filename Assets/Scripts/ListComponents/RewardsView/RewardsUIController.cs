@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+
+
 public class RewardsUIController : ListUIController<RewardData>
 {
     // This is a work around for not being able to do new T() for generics.

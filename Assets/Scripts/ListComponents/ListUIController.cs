@@ -35,7 +35,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public void ShowCreateListItemPanel()
+    public void ShowNewListItemPanel()
     {
         newListItemPanel.SetActive(true);
         // TODO: After instantiation, animate the list item details screen pop up
@@ -58,10 +58,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
             Debug.LogError("Cannot create new list item because "
                             + "the UI view responsible for this is not active in the heirarchy.");
             return null;
-        }
-
-        string itemName = string.Empty;
-        string itemDescription = string.Empty;        
+        }  
 
         TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
         Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();

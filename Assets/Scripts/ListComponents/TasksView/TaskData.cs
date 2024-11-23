@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [Serializable]
 public class TaskData : ListItemData
 {
     [SerializeField] private uint _timeCost = 10; // seconds
     [SerializeField] private TaskTier _taskTier = TaskTier.Medium;
+
 
     public uint TimeCost 
     { 
@@ -14,11 +17,13 @@ public class TaskData : ListItemData
         set { _timeCost = value; } 
     } 
 
+
     public TaskTier TaskTier 
     { 
         get { return _taskTier; } 
         set { _taskTier = value; } 
     } 
+
 
     public TaskData(Dictionary<string, string> keyValuePairs) : base() // TODO: come up with a better name for the input
     {

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [Serializable]
 public class RewardData : ListItemData
 {
@@ -20,6 +22,7 @@ public class RewardData : ListItemData
         set { _tier = value; }
     }
 
+
     // Constructor with specific parameters for runtime use
     public RewardData(string name, string description, uint cost)
     {
@@ -28,11 +31,13 @@ public class RewardData : ListItemData
         RewardCost = cost;
     }
 
+
     // Constructor with dictionary input for runtime use
     public RewardData(Dictionary<string, string> keyValuePairs)
     {
         Initialize(keyValuePairs);
     }
+
 
     // Initialization method for dynamic setup
     public void Initialize(Dictionary<string, string> keyValuePairs)

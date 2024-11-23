@@ -1,6 +1,7 @@
 using UnityEngine;
 
-// This class
+
+
 public class RewardsController : ListController<RewardData>
 {
     RewardsUIController rewardsUIController;
@@ -10,6 +11,7 @@ public class RewardsController : ListController<RewardData>
         rewardsUIController = GetComponent<RewardsUIController>();        
     }
     
+
     public override void ActivateListItem()
     {
         // Check if user has enough coins to unlock reward
@@ -19,12 +21,14 @@ public class RewardsController : ListController<RewardData>
         // If yes then call CompleteListItem()
     }
 
+
     public override void CompleteListItem()
     {
         // Deduct coins
 
         // Animate celebration for completing reward
     }
+    
 
     public override void SelectListItem()
     {

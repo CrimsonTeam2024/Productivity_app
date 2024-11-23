@@ -2,6 +2,8 @@ using System;
 using System.Xml.XPath;
 using UnityEngine;
 
+
+
 // This class
 public class TasksController : ListController<TaskData>
 {
@@ -13,6 +15,7 @@ public class TasksController : ListController<TaskData>
         TasksUIController = GetComponent<TasksUIController>();        
     }
 
+
     // TODO: Implement
     public override void ActivateListItem()
     {
@@ -23,7 +26,8 @@ public class TasksController : ListController<TaskData>
         // If activate chosen, create focus session based on task data
     }
 
-    // TODO: Figure out how list items 
+
+    // TODO: List items should do something when completed
     public override void CompleteListItem()
     {
         // Provisional solution.

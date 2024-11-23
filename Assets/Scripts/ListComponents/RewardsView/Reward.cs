@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class Reward : MonoBehaviour
 {
     public RewardData rewardData;

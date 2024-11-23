@@ -12,19 +12,24 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
     ListUIController<T> uiController;
     public GameManager gameManager;
 
+
     void Start()
     {
         uiController = GetComponent<ListUIController<T>>();
     }
 
+
     // What the item does when "started"
     public abstract void ActivateListItem();
+
 
     // What happens when user completes list item
     public abstract void CompleteListItem();
 
+
     // Reveal list item details view on list item select
     public abstract void SelectListItem();
+
     
     // Hide list item details view
     public void DeselectListItem()
@@ -33,10 +38,12 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
         selectedListItem = null;
     }
 
-    public void ShowNewListItem()
+
+    public void ShowNewListItemPanel()
     {
-        uiController.ShowCreateListItemPanel();
+        uiController.ShowNewListItemPanel();
     }
+
 
     public void CreateNewListItem()
     {
@@ -46,10 +53,12 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
         uiController.HideCreateListItemPanel();
     }
 
+
     public void CancelCreateNewListItem()
     {
         uiController.HideCreateListItemPanel();
     }
+
 
     public void AddListItem(T listItem)
     {
