@@ -1,21 +1,23 @@
 using System.Collections.Generic;
-using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// This class
-public abstract class ListController<T> : MonoBehaviour where T : ListItemData
+
+
+public abstract class ListController<T> : MonoBehaviour where T : ListItem
 {
     [SerializeField] List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
     ListUIController<T> uiController;
     public GameManager gameManager;
+    public uint atIndex = 0;
 
 
     void Start()
     {
         uiController = GetComponent<ListUIController<T>>();
+        uiController.list = list;
     }
 
 
@@ -47,9 +49,14 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
 
     public void CreateNewListItem()
     {
-        T listItem = uiController.CreateNewListItem();
-        uiController.InstantiateNewListItem(listItem);
-        AddListItem(listItem);
+        Dictionary<string, string> temp = uiController.CreateNewListItem();
+        
+        T listItem = uiController.InstantiateNewListItem();
+
+        AddListItem(listItem, atIndex);
+
+        uiController.UpdateListItemPositions(list);
+
         uiController.HideCreateListItemPanel();
     }
 
@@ -60,10 +67,27 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public void AddListItem(T listItem)
+    public void AddListItem(T listItem, uint index)
     {
-        // TODO: Add list item
-        list.Add(listItem);
+        if (index > list.Count)
+        {
+            Debug.LogError("List item index out of range.");
+            return;
+        }
+
+        listItem.Index = index;
+
+        list.Insert((int)index, listItem);
+        UpdateListIndices();
+    }
+
+
+    void UpdateListIndices()
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].Index = (uint)i;
+        }
     }
 
 

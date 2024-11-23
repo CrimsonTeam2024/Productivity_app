@@ -3,20 +3,31 @@ using TMPro;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
-public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
+public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
 {
+    public List<T> list;
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
+    public float offset; // List spacing
+    public Vector2 listTopPosition;
 
-    void Awake() {
+
+    void Awake()
+    {
         // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
     }
 
 
-    public void ShowDetailsPanel(ListItemData listItem)
+    void Update()
+    {
+        UpdateListItemPositions(list);
+    }
+
+
+    public void ShowDetailsPanel()
     {
         // TODO: Manipulate transform position such that details panel is well positioned
         
@@ -51,7 +62,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public T CreateNewListItem()
+    public Dictionary<string, string> CreateNewListItem()
     {
         if (!newListItemPanel.activeInHierarchy)
         {
@@ -83,20 +94,54 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
             }
         }
 
-        T listItem = ConvertInputFieldsToListItem(placeholderToTextMap);
-        
-        return listItem;
+        return placeholderToTextMap;
     }
 
 
-    public void InstantiateNewListItem(T listItemData)
+    public T InstantiateNewListItem()
     {
-        Instantiate(listItemPrefab, transform);
+        GameObject newListItem = Instantiate(listItemPrefab, transform);
+        return newListItem.GetComponent<T>();
     }
 
-
-    protected abstract T ConvertInputFieldsToListItem(Dictionary<string, string> dict);
     
+    public void UpdateListItemPositions(List<T> list)
+    {
+        if (list == null || list.Count == 0)
+        {
+            Debug.LogError("List cannot be null or empty when updating item positions.");
+            return;
+        }
 
-    public abstract void FillDetails(ListItemData listItem);
+        foreach (T item in list)
+        {
+            if (item == null)
+            {
+                Debug.LogWarning("Null item found in the list; skipping.");
+                continue;
+            }
+
+            Transform parentTransform = item.transform;
+
+            if (parentTransform == null)
+            {
+                Debug.LogWarning($"Item {item} has no parent; skipping.");
+                continue;
+            }
+
+            // Try to get the RectTransform from the parent
+            RectTransform parentRectTransform = parentTransform as RectTransform;
+            if (parentRectTransform == null)
+            {
+                Debug.LogWarning($"Parent of {item} is not a RectTransform; skipping.");
+                continue;
+            }
+
+            // Calculate new position in 2D space
+            Vector2 newPosition = listTopPosition + item.Index * Vector2.down * offset;
+
+            // Apply new position, modifying only the anchoredPosition (used for UI elements)
+            parentRectTransform.anchoredPosition = newPosition;
+        }
+    }
 }
