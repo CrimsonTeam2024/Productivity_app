@@ -12,9 +12,9 @@ public class FocusController : MonoBehaviour
     }
 
 
-    public void StartFocusTimer(Task activatedTask) // TODO: Connect ListController to this
+    public void StartFocusTimer(TaskData taskData)// TODO: Connect ListController to this
     {
-        focusTime = new Timer(activatedTask.taskData.TimeCost);
+        focusTime = new Timer(taskData.TimeCost);
         focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
         
         focusUIController.ShowFocusTimer(focusTime);
