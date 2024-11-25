@@ -21,6 +21,11 @@ public class TasksController : ListController<TaskData>
         // After selected, prompt to activate task
 
         // If activate chosen, create focus session based on task data
+
+        FocusController focusController = FindAnyObjectByType<FocusController>();
+
+        // begin cronometer
+        focusController.StartFocusTimer(selectedListItem);
     }
 
     // TODO: Figure out how list items 
