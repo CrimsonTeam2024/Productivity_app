@@ -1,30 +1,39 @@
 using System.Collections.Generic;
-using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// This class
-public abstract class ListController<T> : MonoBehaviour where T : ListItemData
+
+
+public abstract class ListController<T> : MonoBehaviour where T : ListItem
 {
-    [SerializeField] List<T> list;
+    [SerializeField] protected List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
-    ListUIController<T> uiController;
+    protected ListUIController<T> uiController;
     public GameManager gameManager;
+    public uint atIndex = 0;
+
 
     void Start()
     {
         uiController = GetComponent<ListUIController<T>>();
+        uiController.list = list;
+
+        // ListItem.OnDeleteFromList += HandleDeleteItemFromList;
     }
+
 
     // What the item does when "started"
     public abstract void ActivateListItem();
 
+
     // What happens when user completes list item
     public abstract void CompleteListItem();
 
+
     // Reveal list item details view on list item select
     public abstract void SelectListItem();
+
     
     // Hide list item details view
     public void DeselectListItem()
@@ -33,28 +42,66 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItemData
         selectedListItem = null;
     }
 
-    public void ShowNewListItem()
+
+    public void ShowNewListItemPanel()
     {
-        uiController.ShowCreateListItemPanel();
+        uiController.ShowNewListItemPanel();
     }
 
+
     public void CreateNewListItem()
-    {
-        T listItem = uiController.CreateNewListItem();
-        uiController.InstantiateNewListItem(listItem);
-        AddListItem(listItem);
+    {    
+        T listItem = uiController.InstantiateNewListItem(atIndex);
+
+        // TODO: Populate listItem with data from the NewListItemPanel input fields
+        // Dictionary<string, string> temp = uiController.CreateNewListItem();
+
+        AddListItem(listItem, atIndex);
+
+        uiController.UpdateListItemTargetPositions(list);
+
         uiController.HideCreateListItemPanel();
     }
+
 
     public void CancelCreateNewListItem()
     {
         uiController.HideCreateListItemPanel();
     }
 
-    public void AddListItem(T listItem)
+
+    public void AddListItem(T listItem, uint index)
     {
-        // TODO: Add list item
-        list.Add(listItem);
+        if (index > list.Count)
+        {
+            Debug.LogError("List item index out of range.");
+            return;
+        }
+
+        listItem.Index = index;
+
+        list.Insert((int)index, listItem);
+        UpdateListIndices();
+    }
+
+
+    protected void UpdateListIndices()
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].Index = (uint)i;
+        }
+    }
+
+
+    // This method is triggered when the OnDeleteFromList global event fires
+    public void HandleDeleteItemFromList(ListItem listItem, GameObject listItemGameObject)
+    {
+        int id = (int)listItem.Index;
+        list.RemoveAt(id);
+        UpdateListIndices();
+        Destroy(listItemGameObject);
+        uiController.UpdateListItemTargetPositions(list);
     }
 
 

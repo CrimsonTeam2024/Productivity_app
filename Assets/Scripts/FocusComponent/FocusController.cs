@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FocusController : MonoBehaviour
 {
-    public TaskData focusedTask;
+    public Task focusedTask;
     public Timer focusTime;
     FocusUIController focusUIController;
 
@@ -14,7 +14,7 @@ public class FocusController : MonoBehaviour
 
     public void StartFocusTimer(Task activatedTask) // TODO: Connect ListController to this
     {
-        focusTime = new Timer(activatedTask.taskData.TimeCost);
+        focusTime = new Timer(activatedTask.TimeCost);
         focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
         
         focusUIController.ShowFocusTimer(focusTime);

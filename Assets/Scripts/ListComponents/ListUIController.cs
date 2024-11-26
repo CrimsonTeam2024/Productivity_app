@@ -3,20 +3,32 @@ using TMPro;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
-public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
+public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
 {
+    public List<T> list;
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
+    public float listSpacing; // List spacing
+    public Vector2 listTopPosition;
 
-    void Awake() {
+
+    void Awake()
+    {
+        // list =
         // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
     }
 
 
-    public void ShowDetailsPanel(ListItemData listItem)
+    void Update()
+    {
+        // UpdateListItemPositions(list);
+    }
+
+
+    public void ShowDetailsPanel()
     {
         // TODO: Manipulate transform position such that details panel is well positioned
         
@@ -35,7 +47,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public void ShowCreateListItemPanel()
+    public void ShowNewListItemPanel()
     {
         newListItemPanel.SetActive(true);
         // TODO: After instantiation, animate the list item details screen pop up
@@ -51,17 +63,14 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
     }
 
 
-    public T CreateNewListItem()
+    public Dictionary<string, string> CreateNewListItem()
     {
         if (!newListItemPanel.activeInHierarchy)
         {
             Debug.LogError("Cannot create new list item because "
                             + "the UI view responsible for this is not active in the heirarchy.");
             return null;
-        }
-
-        string itemName = string.Empty;
-        string itemDescription = string.Empty;        
+        }  
 
         TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
         Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();
@@ -86,20 +95,39 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItemData
             }
         }
 
-        T listItem = ConvertInputFieldsToListItem(placeholderToTextMap);
-        
+        return placeholderToTextMap;
+    }
+
+
+    public T InstantiateNewListItem(uint index)
+    {
+        GameObject newListItem = Instantiate(listItemPrefab, transform);
+        T listItem = newListItem.GetComponent<T>();
+        listItem.Index = index;
+        listItem.UpdateTargetPosition(listTopPosition, listSpacing);
+        listItem.SnapToTargetPosition();
         return listItem;
     }
 
-
-    public void InstantiateNewListItem(T listItemData)
-    {
-        Instantiate(listItemPrefab, transform);
-    }
-
-
-    protected abstract T ConvertInputFieldsToListItem(Dictionary<string, string> dict);
     
+    public void UpdateListItemTargetPositions(List<T> list)
+    {
+        if (list == null || list.Count == 0)
+        {
+            Debug.LogError("List cannot be null or empty when updating item positions.");
+            return;
+        }
 
-    public abstract void FillDetails(ListItemData listItem);
+        foreach (T item in list)
+        {
+            if (item == null)
+            {
+                Debug.LogWarning("Null item found in the list; skipping.");
+                continue;
+            }
+
+            // Calculate new position in 2D space
+            item.UpdateTargetPosition(listTopPosition, listSpacing);
+        }
+    }
 }

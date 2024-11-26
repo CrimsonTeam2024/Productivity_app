@@ -1,15 +1,13 @@
-using UnityEngine;
-
-// This class
-public class RewardsController : ListController<RewardData>
+public class RewardsController : ListController<Reward>
 {
     RewardsUIController rewardsUIController;
 
     void Awake()
     {
-        rewardsUIController = GetComponent<RewardsUIController>();        
+        Reward.OnDeleteReward += HandleDeleteItemFromList;
     }
     
+
     public override void ActivateListItem()
     {
         // Check if user has enough coins to unlock reward
@@ -19,15 +17,17 @@ public class RewardsController : ListController<RewardData>
         // If yes then call CompleteListItem()
     }
 
+
     public override void CompleteListItem()
     {
         // Deduct coins
 
         // Animate celebration for completing reward
     }
+    
 
     public override void SelectListItem()
     {
-        rewardsUIController.ShowDetailsPanel(selectedListItem);
+        rewardsUIController.ShowDetailsPanel();
     }
 }
