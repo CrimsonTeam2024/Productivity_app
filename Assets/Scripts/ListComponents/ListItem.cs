@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 
 
 public class ListItem : MonoBehaviour
 {
+    // Static event that passes the ListItem and its associated GameObject
+    public static event Action<ListItem, GameObject> OnDeleteFromList;
+
     uint _index;
     public uint Index 
     {
@@ -18,8 +22,9 @@ public class ListItem : MonoBehaviour
     public string ItemDescription { get { return _itemDescription; } set { _itemDescription = value; } }
 
 
-    public void Delete()
+    public void TriggerOnDelete()
     {
-        Destroy(gameObject);
+        // Trigger the static global delete event with this instance and its GameObject
+        OnDeleteFromList?.Invoke(this, gameObject);
     }
 }

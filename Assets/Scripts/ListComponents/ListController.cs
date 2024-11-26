@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,6 +20,8 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
     {
         uiController = GetComponent<ListUIController<T>>();
         uiController.list = list;
+
+        ListItem.OnDeleteFromList += HandleDeleteItemFromList;
     }
 
 
@@ -90,6 +94,16 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
         {
             list[i].Index = (uint)i;
         }
+    }
+
+    
+    // This method is triggered when the OnDeleteFromList global event fires
+    void HandleDeleteItemFromList(ListItem listItem, GameObject listItemGameObject)
+    {
+        int id = (int)listItem.Index;
+        list.RemoveAt(id);
+        UpdateListIndices();
+        Destroy(listItemGameObject);
     }
 
 

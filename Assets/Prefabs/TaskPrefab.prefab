@@ -53,11 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612e7ddf3c24a4746a0dc47290fb25d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskData:
-    _itemName: 
-    _itemDescription: 
-    _timeCost: 0
-    _taskTier: 0
+  _itemName: 
+  _itemDescription: 
+  _timeCost: 10
+  _taskTier: 1
 --- !u!222 &574244639988506511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -623,8 +622,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4114001791416244940}
-        m_TargetAssemblyTypeName: Task, Assembly-CSharp
-        m_MethodName: Delete
+        m_TargetAssemblyTypeName: ListItem, Assembly-CSharp
+        m_MethodName: TriggerOnDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
