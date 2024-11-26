@@ -1,6 +1,4 @@
 using System;
-using System.Xml.XPath;
-using UnityEngine;
 
 
 
@@ -12,7 +10,7 @@ public class TasksController : ListController<Task>
 
     void Awake()
     {
-        TasksUIController = GetComponent<TasksUIController>();        
+        Task.OnDeleteTask += HandleDeleteItemFromList;
     }
 
 

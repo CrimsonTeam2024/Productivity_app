@@ -9,12 +9,13 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
-    public float offset; // List spacing
+    public float listSpacing; // List spacing
     public Vector2 listTopPosition;
 
 
     void Awake()
     {
+        // list =
         // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
@@ -23,7 +24,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
 
     void Update()
     {
-        UpdateListItemPositions(list);
+        // UpdateListItemPositions(list);
     }
 
 
@@ -98,14 +99,18 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     }
 
 
-    public T InstantiateNewListItem()
+    public T InstantiateNewListItem(uint index)
     {
         GameObject newListItem = Instantiate(listItemPrefab, transform);
-        return newListItem.GetComponent<T>();
+        T listItem = newListItem.GetComponent<T>();
+        listItem.Index = index;
+        listItem.UpdateTargetPosition(listTopPosition, listSpacing);
+        listItem.SnapToTargetPosition();
+        return listItem;
     }
 
     
-    public void UpdateListItemPositions(List<T> list)
+    public void UpdateListItemTargetPositions(List<T> list)
     {
         if (list == null || list.Count == 0)
         {
@@ -121,27 +126,8 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
                 continue;
             }
 
-            Transform parentTransform = item.transform;
-
-            if (parentTransform == null)
-            {
-                Debug.LogWarning($"Item {item} has no parent; skipping.");
-                continue;
-            }
-
-            // Try to get the RectTransform from the parent
-            RectTransform parentRectTransform = parentTransform as RectTransform;
-            if (parentRectTransform == null)
-            {
-                Debug.LogWarning($"Parent of {item} is not a RectTransform; skipping.");
-                continue;
-            }
-
             // Calculate new position in 2D space
-            Vector2 newPosition = listTopPosition + item.Index * Vector2.down * offset;
-
-            // Apply new position, modifying only the anchoredPosition (used for UI elements)
-            parentRectTransform.anchoredPosition = newPosition;
+            item.UpdateTargetPosition(listTopPosition, listSpacing);
         }
     }
 }

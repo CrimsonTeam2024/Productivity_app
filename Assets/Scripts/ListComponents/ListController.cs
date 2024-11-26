@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,10 +6,10 @@ using UnityEngine.EventSystems;
 
 public abstract class ListController<T> : MonoBehaviour where T : ListItem
 {
-    [SerializeField] List<T> list;
+    [SerializeField] protected List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
-    ListUIController<T> uiController;
+    protected ListUIController<T> uiController;
     public GameManager gameManager;
     public uint atIndex = 0;
 
@@ -21,7 +19,7 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
         uiController = GetComponent<ListUIController<T>>();
         uiController.list = list;
 
-        ListItem.OnDeleteFromList += HandleDeleteItemFromList;
+        // ListItem.OnDeleteFromList += HandleDeleteItemFromList;
     }
 
 
@@ -52,16 +50,15 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
 
 
     public void CreateNewListItem()
-    {
-        
-        T listItem = uiController.InstantiateNewListItem();
+    {    
+        T listItem = uiController.InstantiateNewListItem(atIndex);
 
         // TODO: Populate listItem with data from the NewListItemPanel input fields
         // Dictionary<string, string> temp = uiController.CreateNewListItem();
 
         AddListItem(listItem, atIndex);
 
-        uiController.UpdateListItemPositions(list);
+        uiController.UpdateListItemTargetPositions(list);
 
         uiController.HideCreateListItemPanel();
     }
@@ -88,7 +85,7 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
     }
 
 
-    void UpdateListIndices()
+    protected void UpdateListIndices()
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -96,14 +93,15 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
         }
     }
 
-    
+
     // This method is triggered when the OnDeleteFromList global event fires
-    void HandleDeleteItemFromList(ListItem listItem, GameObject listItemGameObject)
+    public void HandleDeleteItemFromList(ListItem listItem, GameObject listItemGameObject)
     {
         int id = (int)listItem.Index;
         list.RemoveAt(id);
         UpdateListIndices();
         Destroy(listItemGameObject);
+        uiController.UpdateListItemTargetPositions(list);
     }
 
 

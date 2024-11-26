@@ -3,12 +3,13 @@ using UnityEngine;
 
 
 
-public class ListItem : MonoBehaviour
+public abstract class ListItem : MonoBehaviour
 {
     // Static event that passes the ListItem and its associated GameObject
     public static event Action<ListItem, GameObject> OnDeleteFromList;
+    public RectTransform rectTransform;
 
-    uint _index;
+    [SerializeField] uint _index;
     public uint Index 
     {
         get { return _index; }
@@ -21,10 +22,37 @@ public class ListItem : MonoBehaviour
     [SerializeField] string _itemDescription;
     public string ItemDescription { get { return _itemDescription; } set { _itemDescription = value; } }
 
+    [SerializeField] Vector2 _targetPosition;
+    public Vector2 TargetPosition { get { return _targetPosition; } set { _targetPosition = value; } }
 
-    public void TriggerOnDelete()
+
+    public abstract void TriggerOnDelete();
+    // {
+    //     // Trigger the static global delete event with this instance and its GameObject
+    //     OnDeleteFromList?.Invoke(this, gameObject);
+    // }
+
+
+    public void UpdateTargetPosition(Vector2 topPosition, float listSpacing)
     {
-        // Trigger the static global delete event with this instance and its GameObject
-        OnDeleteFromList?.Invoke(this, gameObject);
+        TargetPosition = topPosition + Index * Vector2.down * listSpacing;
+    }
+
+
+    public void SnapToTargetPosition()
+    {
+        rectTransform.transform.position = new Vector3(TargetPosition.x, TargetPosition.y, 0f);
+    }
+
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
+
+    void Update()
+    {
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, TargetPosition, 0.1f);
     }
 }

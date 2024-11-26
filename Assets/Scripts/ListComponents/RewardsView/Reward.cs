@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Reward : ListItem
 {
+    public static event Action<ListItem, GameObject> OnDeleteReward;
+    
     [SerializeField] private uint _rewardCost; // Coin cost
     [SerializeField] private RewardTier _tier;
 
@@ -59,5 +61,10 @@ public class Reward : ListItem
                 continue;
             }
         }
+    }
+
+    public override void TriggerOnDelete()
+    {
+        OnDeleteReward?.Invoke(this, gameObject);
     }
 }

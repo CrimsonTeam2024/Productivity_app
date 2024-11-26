@@ -1,4 +1,3 @@
-using UnityEngine;
 
 
 
@@ -8,7 +7,7 @@ public class RewardsController : ListController<Reward>
 
     void Awake()
     {
-        rewardsUIController = GetComponent<RewardsUIController>();        
+        Reward.OnDeleteReward += HandleDeleteItemFromList;
     }
     
 

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Task : ListItem
 {
+    public static event Action<Task, GameObject> OnDeleteTask;
+
     [SerializeField] uint _timeCost = 10; // seconds
     [SerializeField] TaskTier _taskTier = TaskTier.Medium;
 
@@ -59,5 +61,11 @@ public class Task : ListItem
                 continue;
             }
         }
+    }
+
+
+    public override void TriggerOnDelete()
+    {
+        OnDeleteTask?.Invoke(this, gameObject);
     }
 }
