@@ -49,9 +49,11 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
 
     public void CreateNewListItem()
     {
-        Dictionary<string, string> temp = uiController.CreateNewListItem();
         
         T listItem = uiController.InstantiateNewListItem();
+
+        // TODO: Populate listItem with data from the NewListItemPanel input fields
+        // Dictionary<string, string> temp = uiController.CreateNewListItem();
 
         AddListItem(listItem, atIndex);
 
