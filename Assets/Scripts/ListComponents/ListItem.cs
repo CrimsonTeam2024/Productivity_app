@@ -26,11 +26,19 @@ public abstract class ListItem : MonoBehaviour
     public Vector2 TargetPosition { get { return _targetPosition; } set { _targetPosition = value; } }
 
 
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
+
+    void Update()
+    {
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, TargetPosition, 0.1f);
+    }
+
+
     public abstract void TriggerOnDelete();
-    // {
-    //     // Trigger the static global delete event with this instance and its GameObject
-    //     OnDeleteFromList?.Invoke(this, gameObject);
-    // }
 
 
     public void UpdateTargetPosition(Vector2 topPosition, float listSpacing)
@@ -42,17 +50,5 @@ public abstract class ListItem : MonoBehaviour
     public void SnapToTargetPosition()
     {
         rectTransform.transform.position = new Vector3(TargetPosition.x, TargetPosition.y, 0f);
-    }
-
-
-    void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
-
-    void Update()
-    {
-        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, TargetPosition, 0.1f);
     }
 }

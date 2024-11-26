@@ -191,7 +191,7 @@ MonoBehaviour:
   listItemDetailsPanel: {fileID: 1939450350}
   newListItemPanel: {fileID: 21159270}
   listItemPrefab: {fileID: 4865871102656441118, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
-  offset: 180
+  listSpacing: 200
   listTopPosition: {x: 0, y: 800}
 --- !u!1 &21159270
 GameObject:
@@ -4133,6 +4133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358396587}
   - component: {fileID: 1358396588}
+  - component: {fileID: 1358396589}
   m_Layer: 5
   m_Name: RewardList
   m_TagString: Untagged
@@ -4176,6 +4177,24 @@ MonoBehaviour:
   toggleDetail: 0
   gameManager: {fileID: 0}
   atIndex: 0
+--- !u!114 &1358396589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358396586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7f20c2dea038b40be3bff895146a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list: []
+  listItemDetailsPanel: {fileID: 1939450350}
+  newListItemPanel: {fileID: 21159270}
+  listItemPrefab: {fileID: 4865871102656441118, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+  listSpacing: 0
+  listTopPosition: {x: 0, y: 0}
 --- !u!1 &1440145755
 GameObject:
   m_ObjectHideFlags: 0

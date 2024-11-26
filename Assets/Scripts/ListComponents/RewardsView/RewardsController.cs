@@ -1,6 +1,3 @@
-
-
-
 public class RewardsController : ListController<Reward>
 {
     RewardsUIController rewardsUIController;
