@@ -101,7 +101,10 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
         list.RemoveAt(id);
         UpdateListIndices();
         Destroy(listItemGameObject);
-        uiController.UpdateListItemTargetPositions(list);
+        if (list.Count > 0)
+        {
+            uiController.UpdateListItemTargetPositions(list);
+        }
     }
 
 
