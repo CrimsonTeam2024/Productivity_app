@@ -1,0 +1,5 @@
+Focus Animation:
+
+Component: Image
+> Image Type: Filled
+> Fill Amount: 0 -> 1 animate!!
