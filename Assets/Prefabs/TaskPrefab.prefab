@@ -53,8 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612e7ddf3c24a4746a0dc47290fb25d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  _index: 0
   _itemName: 
   _itemDescription: 
+  _targetPosition: {x: 0, y: 0}
   _timeCost: 10
   _taskTier: 1
 --- !u!222 &574244639988506511
@@ -494,7 +497,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -52.239887, y: -37.99234, z: -569.89014, w: -20.57953}
+  m_margin: {x: -52.239887, y: -37.99234, z: -461.15564, w: -20.57953}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

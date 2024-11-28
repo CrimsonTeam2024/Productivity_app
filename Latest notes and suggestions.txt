@@ -1,0 +1,13 @@
+Navbar
+- animation idea: spacing 0 -> final (currently 30)
+- 'unfolding' from center like a deck of cards on startup. noyce.
+- Also, the navbar could shift from y = -height , also noyce.
+
+Focus button
+- This should be an element of the list item (it's activation button),
+	not part of a separate view altogether (it's nor even nested in
+	the Task List at the moment)
+- Its OnClick refers to a FocusController script BUT:
+	- I think we should parameterise a call to activate the FocusOverlay,
+	which then initialises with data passed to it from the task item
+	(which literally just stores its value and time in text elements)
