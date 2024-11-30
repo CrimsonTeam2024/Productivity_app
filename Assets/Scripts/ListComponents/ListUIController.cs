@@ -13,7 +13,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     public Vector2 listTopPosition;
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         // list =
         // Hide the action specific ui panels

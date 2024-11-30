@@ -2336,6 +2336,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 160287}
     m_Modifications:
+    - target: {fileID: 1078411472534300514, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_text
+      value: Activate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.24826828
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.6603774
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.09033466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4114001791416244940, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerOnActivate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Task, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193210801719000276, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TasksController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1919098566561438969, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2439,6 +2483,14 @@ PrefabInstance:
     - target: {fileID: 4865871102656441118, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489087993444877791, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_Name
+      value: btn_activate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172922244344492749, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
+      propertyPath: m_text
+      value: Delete
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

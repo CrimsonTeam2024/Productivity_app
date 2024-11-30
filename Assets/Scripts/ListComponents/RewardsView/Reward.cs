@@ -67,4 +67,9 @@ public class Reward : ListItem
     {
         OnDeleteReward?.Invoke(this, gameObject);
     }
+
+    public override void TriggerOnActivate()
+    {
+        throw new NotImplementedException();
+    }
 }

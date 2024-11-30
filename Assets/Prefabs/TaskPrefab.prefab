@@ -53,8 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612e7ddf3c24a4746a0dc47290fb25d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  _index: 0
   _itemName: 
   _itemDescription: 
+  _targetPosition: {x: 0, y: 0}
   _timeCost: 10
   _taskTier: 1
 --- !u!222 &574244639988506511
@@ -108,7 +111,7 @@ GameObject:
   - component: {fileID: 7781248980702899464}
   - component: {fileID: 1193210801719000276}
   m_Layer: 5
-  m_Name: btn_complete
+  m_Name: btn_activate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,9 +219,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TasksController, Assembly-CSharp
-        m_MethodName: CompleteListItem
+      - m_Target: {fileID: 4114001791416244940}
+        m_TargetAssemblyTypeName: Task, Assembly-CSharp
+        m_MethodName: TriggerOnActivate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,7 +296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Delete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -698,7 +701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Activate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

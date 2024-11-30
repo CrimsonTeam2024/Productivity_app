@@ -40,6 +40,7 @@ public abstract class ListItem : MonoBehaviour
 
     public abstract void TriggerOnDelete();
 
+    public abstract void TriggerOnActivate();
 
     public void UpdateTargetPosition(Vector2 topPosition, float listSpacing)
     {

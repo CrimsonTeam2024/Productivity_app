@@ -1,16 +1,21 @@
 using System;
+using System.Collections;
+using UnityEngine;
 
 
 
 // This class
 public class TasksController : ListController<Task>
 {
-    TasksUIController TasksUIController;
-
+    TasksUIController tasksUIController;
+    FocusController focusController;
 
     void Awake()
     {
+        focusController = GameObject.Find("Focus").GetComponent<FocusController>();
+        tasksUIController = GetComponent<TasksUIController>();
         Task.OnDeleteTask += HandleDeleteItemFromList;
+        Task.OnActivateTask += HandleActivateItemFromTaskList;
     }
 
 
@@ -59,6 +64,14 @@ public class TasksController : ListController<Task>
 
     public override void SelectListItem()
     {
-        TasksUIController.ShowDetailsPanel();
+        tasksUIController.ShowDetailsPanel();
+    }
+
+    public void HandleActivateItemFromTaskList(Task task, GameObject taskObject)
+    {
+        // deactivate task scene
+        tasksUIController.HideTaskScene();
+        // activate focus scene
+        focusController.StartFocusTimer(task);
     }
 }
