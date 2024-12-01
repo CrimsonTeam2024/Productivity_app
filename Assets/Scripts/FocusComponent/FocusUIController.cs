@@ -20,14 +20,28 @@ public class FocusUIController : MonoBehaviour
             focusTimerObject.SetActive(true);
             isTimerShown = true;
             focusTimerText.text = _timer.ToString();
+            _timer.OnTimerTick += UpdateTimerText;//suscribe to the event to update the text
+
         }
     }
 
-    void Update()
+
+    // TODO: Consider a better way of doing this.
+    //       Maybe we can create tick events, 
+    //       rather than updating this logic once every frame
+    //       even though we know we will need to update this string 
+    //       only once every second. The Update method executes every frame, 
+    //       so potentially hundreds of times a second. This is inefficient.
+
+
+
+
+
+    private void UpdateTimerText(string newTime)
     {
-        if (focusTimerText != null && isTimerShown)
-        {
-            focusTimerText.text = _timer.ToString();
+        if (focusTimerText != null)
+        { 
+            focusTimerText.text = newTime;
         }
     }
 
