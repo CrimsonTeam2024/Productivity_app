@@ -44,11 +44,12 @@ public abstract class ListItem : MonoBehaviour
     public void UpdateTargetPosition(Vector2 topPosition, float listSpacing)
     {
         TargetPosition = topPosition + Index * Vector2.down * listSpacing;
+
     }
 
 
     public void SnapToTargetPosition()
     {
-        rectTransform.transform.position = new Vector3(TargetPosition.x, TargetPosition.y, 0f);
+        rectTransform.anchoredPosition = TargetPosition;
     }
 }

@@ -23,19 +23,15 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
     }
 
 
-    // What the item does when "started"
     public abstract void ActivateListItem();
 
 
-    // What happens when user completes list item
     public abstract void CompleteListItem();
 
 
-    // Reveal list item details view on list item select
     public abstract void SelectListItem();
 
-    
-    // Hide list item details view
+   
     public void DeselectListItem()
     {
         uiController.HideDetails();

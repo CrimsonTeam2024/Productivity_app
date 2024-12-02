@@ -11,7 +11,8 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     public GameObject listItemPrefab; // The actual list item prefab
     public float listSpacing; // List spacing
     public Vector2 listTopPosition;
-
+    public Transform listItemParentContext; // Place new items within this object...
+    public RectTransform contentRectTransform; // ...anchoring them with respect to its transform
 
     void Awake()
     {
@@ -19,6 +20,8 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
         // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
+
+        listTopPosition = contentRectTransform.anchoredPosition; // set init top position relative to scrolling container
     }
 
 
@@ -101,7 +104,9 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
 
     public T InstantiateNewListItem(uint index)
     {
-        GameObject newListItem = Instantiate(listItemPrefab, transform);
+        GameObject newListItem = Instantiate(listItemPrefab, listItemParentContext);
+        // By default, 'transform' refers to the component of the gameObject
+        // to which this script is attached
         T listItem = newListItem.GetComponent<T>();
         listItem.Index = index;
         listItem.UpdateTargetPosition(listTopPosition, listSpacing);
