@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Task : ListItem
 {
+    public static event Action<Task, GameObject> OnActivateTask;
     public static event Action<Task, GameObject> OnDeleteTask;
 
     [SerializeField] uint _timeCost = 10; // seconds
@@ -21,7 +22,34 @@ public class Task : ListItem
     { 
         get { return _taskTier; } 
         set { _taskTier = value; } 
-    } 
+    }
+
+    TaskUIController uiController;
+
+
+    void Start()
+    {
+        // Get reference to the UI Controller
+        uiController = GetComponent<TaskUIController>();
+        if (uiController == null)
+        {
+            Debug.LogError("TaskUIController is not attached to the Task GameObject!", this);
+            return;
+        }
+
+        // Subscribe to the activate button's event
+        uiController.activateButton.onClick.AddListener(TriggerOnActivate);
+    }
+
+
+    private void OnDestroy()
+    {
+        // Unsubscribe from the UI Controller event to avoid memory leaks
+        if (uiController != null)
+        {
+            uiController.activateButton.onClick.RemoveListener(TriggerOnActivate);
+        }
+    }
 
 
     // Initialization method for dynamic setup
@@ -67,5 +95,12 @@ public class Task : ListItem
     public override void TriggerOnDelete()
     {
         OnDeleteTask?.Invoke(this, gameObject);
+    }
+
+
+    public override void TriggerOnActivate()
+    {
+        print("Activating Task!");
+        OnActivateTask?.Invoke(this, gameObject);
     }
 }
