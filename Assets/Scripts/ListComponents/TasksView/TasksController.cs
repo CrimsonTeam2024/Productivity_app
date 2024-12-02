@@ -5,18 +5,21 @@ using System;
 // This class
 public class TasksController : ListController<Task>
 {
+    public FocusController focusController;
     TasksUIController TasksUIController;
 
 
     void Awake()
     {
         Task.OnDeleteTask += HandleDeleteItemFromList;
+        Task.OnActivateTask += ActivateListItem;
     }
 
 
     // TODO: Implement
-    public override void ActivateListItem()
+    public override void ActivateListItem(Task activatedTask)
     {
+        focusController.StartFocusTimer(activatedTask);
         // Opens village manager view and prompts to select build tasks
 
         // After selected, prompt to activate task

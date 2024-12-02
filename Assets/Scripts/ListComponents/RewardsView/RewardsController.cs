@@ -8,7 +8,7 @@ public class RewardsController : ListController<Reward>
     }
     
 
-    public override void ActivateListItem()
+    public override void ActivateListItem(Reward reward)
     {
         // Check if user has enough coins to unlock reward
 
@@ -23,6 +23,8 @@ public class RewardsController : ListController<Reward>
         // Deduct coins
 
         // Animate celebration for completing reward
+
+        // Delete reward
     }
     
 

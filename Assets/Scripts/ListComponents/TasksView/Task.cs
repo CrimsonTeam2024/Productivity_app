@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Task : ListItem
 {
-    public static event Action<Task, GameObject> OnActivateTask;
+    public static event Action<Task> OnActivateTask;
     public static event Action<Task, GameObject> OnDeleteTask;
 
     [SerializeField] uint _timeCost = 10; // seconds
@@ -101,6 +101,6 @@ public class Task : ListItem
     public override void TriggerOnActivate()
     {
         print("Activating Task!");
-        OnActivateTask?.Invoke(this, gameObject);
+        OnActivateTask?.Invoke(this);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public abstract class ListController<T> : MonoBehaviour where T : ListItem
 {
-    [SerializeField] protected List<T> list;
+    public List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
     protected ListUIController<T> uiController;
@@ -24,7 +24,7 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
 
 
     // What the item does when "started"
-    public abstract void ActivateListItem();
+    public abstract void ActivateListItem(T ListItem);
 
 
     // What happens when user completes list item
