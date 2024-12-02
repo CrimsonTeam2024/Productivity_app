@@ -42,9 +42,9 @@ public abstract class ListItem : MonoBehaviour
     public abstract void TriggerOnActivate();
 
 
-    public void UpdateTargetPosition(Vector2 topPosition, float listSpacing)
+    public void UpdateTargetPosition(float topPadding, float itemPadding)
     {
-        TargetPosition = topPosition + Index * Vector2.down * listSpacing;
+        TargetPosition = Vector2.down * (topPadding + Index * (rectTransform.sizeDelta.y + itemPadding));
     }
 
 

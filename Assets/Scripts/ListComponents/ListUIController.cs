@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,16 +10,25 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
-    public float listSpacing; // List spacing
-    public Vector2 listTopPosition;
+    public GameObject listContainer;
+    public float listPadding; // List spacing
 
+    RectTransform listContainerRect;
+    public float listTopPadding;
+    public float listBottomPadding;
+    float listItemHeight;
 
     void Awake()
     {
-        // list =
-        // Hide the action specific ui panels
         listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
+    }
+
+    void Start()
+    {
+        listContainerRect = listContainer.GetComponent<RectTransform>();    
+        RectTransform rect = listItemPrefab.transform as RectTransform;
+        listItemHeight = rect.sizeDelta.y;
     }
 
 
@@ -101,10 +111,10 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
 
     public T InstantiateNewListItem(uint index)
     {
-        GameObject newListItem = Instantiate(listItemPrefab, transform);
+        GameObject newListItem = Instantiate(listItemPrefab, listContainer.transform);
         T listItem = newListItem.GetComponent<T>();
         listItem.Index = index;
-        listItem.UpdateTargetPosition(listTopPosition, listSpacing);
+        listItem.UpdateTargetPosition(listTopPadding, listPadding);
         listItem.SnapToTargetPosition();
         return listItem;
     }
@@ -127,7 +137,17 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
             }
 
             // Calculate new position in 2D space
-            item.UpdateTargetPosition(listTopPosition, listSpacing);
+            item.UpdateTargetPosition(listTopPadding, listPadding);
         }
+        
+        UpdateListContainer();
+    }
+
+
+    private void UpdateListContainer()
+    {
+        Vector2 sizeDelta = listContainerRect.sizeDelta;
+        sizeDelta.y = listTopPadding + list.Count * (listItemHeight + listPadding) + listBottomPadding;
+        listContainerRect.sizeDelta = sizeDelta;
     }
 }
