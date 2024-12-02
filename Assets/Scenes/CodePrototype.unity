@@ -175,6 +175,7 @@ MonoBehaviour:
   toggleDetail: 0
   gameManager: {fileID: 0}
   atIndex: 0
+  Focus: {fileID: 1294667913}
 --- !u!114 &160289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   listItemPrefab: {fileID: 4865871102656441118, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
   listSpacing: 200
   listTopPosition: {x: 0, y: 800}
+  newListItemButton: {fileID: 1742433178}
 --- !u!1 &21159270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,6 +4249,7 @@ MonoBehaviour:
   listItemPrefab: {fileID: 4865871102656441118, guid: 99a8acef694d3aa40b1c2a3562eabf41, type: 3}
   listSpacing: 0
   listTopPosition: {x: 0, y: 0}
+  newListItemButton: {fileID: 0}
 --- !u!1 &1440145755
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,11 +8,12 @@ using UnityEngine;
 public class TasksController : ListController<Task>
 {
     TasksUIController tasksUIController;
+    [SerializeField] GameObject Focus;
     FocusController focusController;
 
     void Awake()
     {
-        focusController = GameObject.Find("Focus").GetComponent<FocusController>();
+        focusController = Focus.GetComponent<FocusController>();
         tasksUIController = GetComponent<TasksUIController>();
         Task.OnDeleteTask += HandleDeleteItemFromList;
         Task.OnActivateTask += HandleActivateItemFromTaskList;

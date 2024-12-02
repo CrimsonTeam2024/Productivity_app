@@ -11,6 +11,7 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     public GameObject listItemPrefab; // The actual list item prefab
     public float listSpacing; // List spacing
     public Vector2 listTopPosition;
+    public GameObject newListItemButton;
 
 
     protected virtual void Awake()
