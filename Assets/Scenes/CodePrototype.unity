@@ -2157,7 +2157,7 @@ GameObject:
   - component: {fileID: 512008198}
   - component: {fileID: 512008199}
   m_Layer: 8
-  m_Name: Buildings
+  m_Name: Building_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2172,11 +2172,11 @@ Transform:
   m_GameObject: {fileID: 512008197}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 77.62132, y: 105.9229, z: -1.231048}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.3205943}
+  m_LocalScale: {x: 1.4179102, y: 1.4179102, z: 1.4179102}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1286728247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &512008199
 MonoBehaviour:
@@ -4603,6 +4603,7 @@ RectTransform:
   m_Children:
   - {fileID: 8347201766485511496}
   - {fileID: 1442837486}
+  - {fileID: 512008198}
   m_Father: {fileID: 1304502393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5291,6 +5292,7 @@ GameObject:
   - component: {fileID: 1637310464}
   - component: {fileID: 1637310466}
   - component: {fileID: 1637310465}
+  - component: {fileID: 1637310467}
   m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
@@ -5308,7 +5310,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1437351122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10381,6 +10383,44 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1637310467
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637310463}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &1647140952
 GameObject:
   m_ObjectHideFlags: 0
@@ -10407,7 +10447,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647140952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00000010617076}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11636,11 +11676,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2509624337488249057, guid: 84019ff1bb04963419e9c57a802bdacf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.35614
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2509624337488249057, guid: 84019ff1bb04963419e9c57a802bdacf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53.340637
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2509624337488249057, guid: 84019ff1bb04963419e9c57a802bdacf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11762,4 +11802,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 747894375}
   - {fileID: 289227376}
-  - {fileID: 512008198}

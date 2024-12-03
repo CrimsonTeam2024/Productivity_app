@@ -31,7 +31,7 @@ public class VillageInputHandler : MonoBehaviour, IPointerDownHandler, IPointerU
             {
                 HandleClick(eventData);
             }
-            // Otherwise assume drag, let the ScrollRect handle it
+            // Otherwise it's a drag, let the ScrollRect handle it
         }
     }
 
@@ -39,7 +39,7 @@ public class VillageInputHandler : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
 
-        // Convert screen pos to local RectTransform pos
+        // Convert screen point to local point in the RectTransform
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             rectTransform,
@@ -47,47 +47,57 @@ public class VillageInputHandler : MonoBehaviour, IPointerDownHandler, IPointerU
             eventData.pressEventCamera,
             out localPoint);
 
-        // Normalize local coords to [0,1]
+        // Adjust for the pivot
+        Vector2 pivotAdjustedPoint = localPoint + rectTransform.rect.size * rectTransform.pivot;
+
+        // Normalize coordinates (0 to 1)
         Vector2 normalizedPoint = new Vector2(
-            (localPoint.x - rectTransform.rect.x) / rectTransform.rect.width,
-            (localPoint.y - rectTransform.rect.y) / rectTransform.rect.height);
+            pivotAdjustedPoint.x / rectTransform.rect.width,
+            pivotAdjustedPoint.y / rectTransform.rect.height
+        );
 
-        // Can adjust for pivot
-        normalizedPoint -= rectTransform.pivot;
+        // Convert normalized point to world point
+        Vector3 worldPoint = villageCamera.ViewportToWorldPoint(new Vector3(normalizedPoint.x, normalizedPoint.y, villageCamera.nearClipPlane));
 
-        // Ray from villageCamera
-        Ray ray = villageCamera.ViewportPointToRay(normalizedPoint + new Vector2(0.5f, 0.5f));
+        // Cast a ray at the world point
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (hit.collider != null)
         {
-            // Interact with hit object
             Debug.Log("Hit object: " + hit.collider.gameObject.name);
+            HandleBuildingInteraction(hit);
+        }
+        else
+        {
+            Debug.Log("Raycast did not hit an object.");
+        }
+    }
 
-            // Select building
-            Building building = hit.collider.GetComponent<Building>();
-            if (building != null)
+
+    private void HandleBuildingInteraction(RaycastHit2D hit)
+    {
+        // Select building
+        Building building = hit.collider.GetComponent<Building>();
+        if (building != null)
+        {
+            SelectBuilding(building);
+        }
+        else
+        {
+            // Try to place building at hit position (might not be buildable terrain)
+            Vector3 hitPosition = hit.point;
+            BuildingManager buildingManager = FindObjectOfType<BuildingManager>();
+            if (buildingManager != null)
             {
-                // Selection etc
-                SelectBuilding(building);
-            }
-            else
-            {
-                // Try to place building at hit position
-                // (may not be buildable area)
-                Vector3 hitPosition = hit.point;
-                BuildingManager buildingManager = FindObjectOfType<BuildingManager>();
-                if (buildingManager != null)
-                {
-                    Vector2Int gridPosition = buildingManager.GridPositionFromWorld(hitPosition);
-                    buildingManager.TryPlaceBuildingAt(gridPosition);
-                }
+                Vector2Int gridPosition = buildingManager.GridPositionFromWorld(hitPosition);
+                buildingManager.TryPlaceBuildingAt(gridPosition);
             }
         }
     }
 
     private void SelectBuilding(Building building)
     {
-        // Implement your building selection logic here
         Debug.Log("Selected building: " + building.name);
     }
 }
+

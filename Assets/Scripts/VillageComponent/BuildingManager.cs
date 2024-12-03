@@ -83,7 +83,7 @@ public class BuildingManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cannot build here. Must be adjacent to an existing building.");
+            Debug.Log("Cannot build here.");
         }
     }
 
