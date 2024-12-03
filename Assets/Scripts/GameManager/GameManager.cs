@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     // Initialize Scene Swtiching method, may be modified later
     public void LoadTaskScene() {
         SceneManager.LoadScene("TaskScene");
@@ -81,6 +82,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool SpendCoins(uint amount)
+    {
+        if (coins >= amount)
+        {
+            coins -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddCoins(uint amount)
+    {
+        coins += amount;
+    }
+
+
     private void OnApplicationQuit()
     {
         // Save the game data when the application is being closed
@@ -91,4 +108,13 @@ public class GameManager : MonoBehaviour
     {
         Application.quitting -= SaveGameData;
     }
+
 }
+
+// class for save/load
+//[Serializable]
+//public class PlayerData
+//{
+//    public uint Coins;
+//    public double Xp;
+//}
