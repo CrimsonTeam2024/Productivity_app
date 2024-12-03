@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 // Manager class attached to some manager GameObject that manages 
-public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
+public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<U> where U : ListItemData
 {
     public List<T> list;
     public GameObject listItemDetailsPanel;
@@ -73,40 +73,43 @@ public abstract class ListUIController<T> : MonoBehaviour where T : ListItem
     }
 
 
-    public Dictionary<string, string> CreateNewListItem()
-    {
-        if (!newListItemPanel.activeInHierarchy)
-        {
-            Debug.LogError("Cannot create new list item because "
-                            + "the UI view responsible for this is not active in the heirarchy.");
-            return null;
-        }  
+    public abstract U GetNewListItemDataFromUI();
 
-        TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
-        Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();
+
+    // public Dictionary<string, string> CreateNewListItem()
+    // {
+    //     if (!newListItemPanel.activeInHierarchy)
+    //     {
+    //         Debug.LogError("Cannot create new list item because "
+    //                         + "the UI view responsible for this is not active in the heirarchy.");
+    //         return null;
+    //     }  
+
+    //     TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
+    //     Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();
         
-        // Generate a dictionary of input field names and their values, 
-        // and match them to Task or Reward properties
-        foreach (TMP_InputField inputField in inputFields)
-        {
-            if (inputField.placeholder is TMP_Text placeholderText)
-            {
-                string placeholder = placeholderText.text;
-                string inputText = string.IsNullOrEmpty(inputField.text) ? placeholder : inputField.text;
+    //     // Generate a dictionary of input field names and their values, 
+    //     // and match them to Task or Reward properties
+    //     foreach (TMP_InputField inputField in inputFields)
+    //     {
+    //         if (inputField.placeholder is TMP_Text placeholderText)
+    //         {
+    //             string placeholder = placeholderText.text;
+    //             string inputText = string.IsNullOrEmpty(inputField.text) ? placeholder : inputField.text;
 
-                if (!placeholderToTextMap.ContainsKey(placeholder))
-                {
-                    placeholderToTextMap[placeholder] = inputText;
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Placeholder is not a TMP_Text component.");
-            }
-        }
+    //             if (!placeholderToTextMap.ContainsKey(placeholder))
+    //             {
+    //                 placeholderToTextMap[placeholder] = inputText;
+    //             }
+    //         }
+    //         else
+    //         {
+    //             Debug.LogWarning("Placeholder is not a TMP_Text component.");
+    //         }
+    //     }
 
-        return placeholderToTextMap;
-    }
+    //     return placeholderToTextMap;
+    // }
 
 
     public T InstantiateNewListItem(uint index)

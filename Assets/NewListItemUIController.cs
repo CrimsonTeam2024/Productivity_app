@@ -1,15 +1,28 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
-public class NewListItemPanelUIController : MonoBehaviour
+public abstract class NewListItemPanelUIController<T> : MonoBehaviour where T : ListItemData
 {
     public TMP_InputField itemTitle;
     public TMP_InputField itemDescription;
-    // Get all the input fields (text or otherwise) from the NewListItemPanel GameObject
+    public TMP_Dropdown itemTier;
+    public Button saveButton, cancelButton;
+    private void Start()
+    {
+        // Assign the SaveButtonOnClick method to the saveButton's onClick event
+        // saveButton.onClick.AddListener(SaveButtonOnClick);
+    }
 
-    // Expose methods that validate whether user input in input fields is valid
+    /// <summary>
+    /// This method is called when the save button is clicked.
+    /// </summary>
+    // public abstract void SaveButtonOnClick();
 
-    // Create methods for doing stuff with UI in the case of valid or invalid input
+    // protected abstract void HandleSave();
+
+    public abstract T GetListItemFromUI();
 }

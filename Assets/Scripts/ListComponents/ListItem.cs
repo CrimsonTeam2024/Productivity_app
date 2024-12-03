@@ -1,13 +1,15 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 
-public abstract class ListItem : MonoBehaviour
+public abstract class ListItem<T> : MonoBehaviour where T : ListItemData
 {
     // Static event that passes the ListItem and its associated GameObject
-    public static event Action<ListItem, GameObject> OnDeleteFromList;
+    public static event Action<ListItem<T>, GameObject> OnDeleteFromList;
     public RectTransform rectTransform;
+    // protected ListItemUIController<ListItem<T>, T> uiController;
 
     [SerializeField] uint _index;
     public uint Index 
@@ -26,9 +28,10 @@ public abstract class ListItem : MonoBehaviour
     public Vector2 TargetPosition { get { return _targetPosition; } set { _targetPosition = value; } }
 
 
-    void Awake()
+    void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        // uiController = GetComponent<ListItemUIController<ListItem<T>, T>>();
     }
 
 
@@ -52,4 +55,7 @@ public abstract class ListItem : MonoBehaviour
     {
         rectTransform.transform.position = new Vector3(TargetPosition.x, TargetPosition.y, 0f);
     }
+
+
+    public abstract void SetData(T data);
 }
