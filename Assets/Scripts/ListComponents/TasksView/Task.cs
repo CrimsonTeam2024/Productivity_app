@@ -4,10 +4,11 @@ using UnityEngine;
 
 
 
-public class Task : ListItem
+public class Task : ListItem<TaskData>
 {
     public static event Action<Task> OnActivateTask;
     public static event Action<Task, GameObject> OnDeleteTask;
+    TaskUIController uiController;
 
     [SerializeField] uint _timeCost = 10; // seconds
     [SerializeField] TaskTier _taskTier = TaskTier.Medium;
@@ -24,13 +25,17 @@ public class Task : ListItem
         set { _taskTier = value; } 
     }
 
-    TaskUIController uiController;
+
+    void Awake()
+    {
+        uiController = GetComponent<TaskUIController>();
+    }
 
 
     void Start()
     {
         // Get reference to the UI Controller
-        uiController = GetComponent<TaskUIController>();
+        // uiController = GetComponent<TaskUIController>();
         if (uiController == null)
         {
             Debug.LogError("TaskUIController is not attached to the Task GameObject!", this);
@@ -53,42 +58,52 @@ public class Task : ListItem
 
 
     // Initialization method for dynamic setup
-    public void Initialize(Dictionary<string, string> keyValuePairs)
+    // public void Initialize(Dictionary<string, string> keyValuePairs)
+    // {
+    //     foreach (var pair in keyValuePairs)
+    //     {
+    //         string key = pair.Key;
+
+    //         if (key.Contains("Name"))
+    //         {
+    //             ItemName = pair.Value;
+    //             continue;
+    //         }
+
+    //         if (key.Contains("Description"))
+    //         {
+    //             ItemDescription = pair.Value;
+    //             continue;
+    //         }
+
+    //         if (key.Contains("Cost"))
+    //         {
+    //             if (uint.TryParse(pair.Value, out uint result))
+    //             {
+    //                 TimeCost = result;
+    //             }
+    //             continue;
+    //         }
+
+    //         if (key.Contains("Tier"))
+    //         {
+    //             if (Enum.TryParse(pair.Value, out TaskTier tier))
+    //             {
+    //                 TaskTier = tier;
+    //             }
+    //             continue;
+    //         }
+    //     }
+    // }
+
+    public override void SetData(TaskData taskData)
     {
-        foreach (var pair in keyValuePairs)
-        {
-            string key = pair.Key;
+        ItemName = taskData.itemName;
+        ItemDescription = taskData.itemDescription;
+        TaskTier = taskData.tier;
+        TimeCost = (uint)taskData.timeCost;
 
-            if (key.Contains("Name"))
-            {
-                ItemName = pair.Value;
-                continue;
-            }
-
-            if (key.Contains("Description"))
-            {
-                ItemDescription = pair.Value;
-                continue;
-            }
-
-            if (key.Contains("Cost"))
-            {
-                if (uint.TryParse(pair.Value, out uint result))
-                {
-                    TimeCost = result;
-                }
-                continue;
-            }
-
-            if (key.Contains("Tier"))
-            {
-                if (Enum.TryParse(pair.Value, out TaskTier tier))
-                {
-                    TaskTier = tier;
-                }
-                continue;
-            }
-        }
+        uiController.UpdateUIValues(this);
     }
 
 

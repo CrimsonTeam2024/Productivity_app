@@ -1,4 +1,4 @@
-public class RewardsController : ListController<Reward>
+public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
 

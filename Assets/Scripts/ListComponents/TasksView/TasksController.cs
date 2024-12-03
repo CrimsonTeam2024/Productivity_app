@@ -3,7 +3,7 @@ using System;
 
 
 // This class
-public class TasksController : ListController<Task>
+public class TasksController : ListController<Task, TaskData>
 {
     public FocusController focusController;
     TasksUIController TasksUIController;

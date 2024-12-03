@@ -4,19 +4,19 @@ using UnityEngine.EventSystems;
 
 
 
-public abstract class ListController<T> : MonoBehaviour where T : ListItem
+public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U> where U : ListItemData
 {
     public List<T> list;
     public T selectedListItem; // The currently selected list item
     public bool toggleDetail = false;
-    protected ListUIController<T> uiController;
+    protected ListUIController<T, U> uiController;
     public GameManager gameManager;
     public uint atIndex = 0;
 
 
     void Start()
     {
-        uiController = GetComponent<ListUIController<T>>();
+        uiController = GetComponent<ListUIController<T, U>>();
         uiController.list = list;
 
         // ListItem.OnDeleteFromList += HandleDeleteItemFromList;
@@ -55,6 +55,8 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
 
         // TODO: Populate listItem with data from the NewListItemPanel input fields
         // Dictionary<string, string> temp = uiController.CreateNewListItem();
+        U data = uiController.GetNewListItemDataFromUI();
+        listItem.SetData(data);
 
         AddListItem(listItem, atIndex);
 
@@ -95,7 +97,7 @@ public abstract class ListController<T> : MonoBehaviour where T : ListItem
 
 
     // This method is triggered when the OnDeleteFromList global event fires
-    public void HandleDeleteItemFromList(ListItem listItem, GameObject listItemGameObject)
+    public void HandleDeleteItemFromList(ListItem<U> listItem, GameObject listItemGameObject)
     {
         int id = (int)listItem.Index;
         list.RemoveAt(id);

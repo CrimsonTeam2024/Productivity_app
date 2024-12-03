@@ -94,7 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502babe90cfca374a806ed4755603c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleField: {fileID: 7404313297484993076}
+  descriptionField: {fileID: 4149950251971457719}
+  tierField: {fileID: 3647729215966858997}
   activateButton: {fileID: 4273454053116860970}
+  timeCost: {fileID: 8808106557277030081}
 --- !u!1 &1557648945934848631
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,16 @@
+using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
-public class NewListItemUIController : MonoBehaviour
+public abstract class NewListItemPanelUIController<T> : MonoBehaviour where T : ListItemData
 {
+    public TMP_InputField itemTitle;
+    public TMP_InputField itemDescription;
+    public TMP_Dropdown itemTier;
+    public Button saveButton, cancelButton;
 
-    // Get all the input fields (text or otherwise) from the NewListItemPanel GameObject
-
-    // Expose methods that validate whether user input in input fields is valid
-
-    // Create methods for doing stuff with UI in the case of valid or invalid input
+    public abstract T GetListItemFromUI();
 }

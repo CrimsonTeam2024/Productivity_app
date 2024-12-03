@@ -4,10 +4,11 @@ using UnityEngine;
 
 
 
-public class Reward : ListItem
+public class Reward : ListItem<RewardData>
 {
-    public static event Action<ListItem, GameObject> OnDeleteReward;
-    public static event Action<ListItem, GameObject> OnActivateReward;
+    public static event Action<ListItem<RewardData>, GameObject> OnDeleteReward;
+    public static event Action<ListItem<RewardData>, GameObject> OnActivateReward;
+    RewardUIController uiController;
     
     [SerializeField] private uint _rewardCost; // Coin cost
     [SerializeField] private RewardTier _tier;
@@ -72,5 +73,13 @@ public class Reward : ListItem
     public override void TriggerOnActivate()
     {
         OnActivateReward?.Invoke(this, gameObject);
+    }
+
+    public override void SetData(RewardData data)
+    {
+        ItemName = data.itemName;
+        ItemDescription = data.itemDescription;
+        RewardTier = data.tier;
+        RewardCost = (uint)data.coinCost;
     }
 }
