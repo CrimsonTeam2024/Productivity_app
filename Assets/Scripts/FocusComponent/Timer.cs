@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer
 {
-    public event Action OnTimerEnd; // Event to propagate when timer ends
+    public event Action<Task> OnTimerEnd; // Event to propagate when timer ends
 
     uint _totalSeconds;
     uint _secondsRemaining;
@@ -83,7 +83,7 @@ public class Timer
 
     
     // This is what we call a "Coroutine", as indicated by the "yield return"
-    public IEnumerator StartClock()
+    public IEnumerator StartClock(Task activatedTask)
     {
         _secondsRemaining = _totalSeconds;
         isTimerTicking = true;
@@ -104,6 +104,7 @@ public class Timer
         isTimerTicking = false;
         Debug.Log("Timer finished!");
         
-        OnTimerEnd?.Invoke();
+        // a Task object to be passed to the event 
+        OnTimerEnd?.Invoke(activatedTask);
     }
 }

@@ -40,6 +40,11 @@ public class FocusUIController : MonoBehaviour
     // Method is triggered when OnTimerEnd event triggers
     public void EndFocusTimer()
     {
-        // TODO: Define what the UI should do when the timer ends.
+        // hide the timer
+        if (focusTimerObject != null)
+        {
+            focusTimerObject.SetActive(false);
+            isTimerShown = false;
+        }
     }
 }
