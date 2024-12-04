@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Timer
 {
-    public event Action<Task> OnTimerEnd; // Event to propagate when timer ends
+    public event Action<Task> OnTimerEnd; // Event to propagate when timer ends#
+    public event Action<string> OnTimerTick; // event to update the timer
+
 
     uint _totalSeconds;
     uint _secondsRemaining;
@@ -99,6 +101,9 @@ public class Timer
             _seconds = _secondsRemaining % 60;
 
             Debug.Log(ToString()); // Optional: Log the current time
+
+            // Triggers the event with the updated format
+            OnTimerTick?.Invoke(ToString());
         }
 
         isTimerTicking = false;
