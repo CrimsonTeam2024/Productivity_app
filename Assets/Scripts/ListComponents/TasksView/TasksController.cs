@@ -72,6 +72,17 @@ public class TasksController : ListController<Task, TaskData>
         task.OnDeleteTask += HandleDeleteItemFromList;
     }
 
+    public override void DeleteListItem(Task task)
+    {
+        base.DeleteListItem(task);
+
+        // Subscribe to instance-level events
+        task.OnActivateTask -= ActivateListItem;
+        task.OnEditTask -= EditListItem;
+        task.OnInitEditTask -= ShowEditListItemPanel;
+        task.OnDeleteTask -= HandleDeleteItemFromList;
+    }
+
 
     public override void SelectListItem()
     {

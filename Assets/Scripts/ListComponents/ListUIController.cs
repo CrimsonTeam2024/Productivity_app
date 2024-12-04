@@ -101,6 +101,13 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     }
 
 
+    public void ResetEditListItemPanel()
+    {
+        editController.saveButton.onClick.RemoveAllListeners();
+        editController.deleteButton.onClick.RemoveAllListeners();
+    }
+
+
     public abstract U GetNewListItemDataFromUI();
 
 

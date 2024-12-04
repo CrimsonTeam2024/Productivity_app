@@ -81,6 +81,7 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     public void CancelEditListItem()
     {
         uiController.HideEditListItemPanel();
+        uiController.ResetEditListItemPanel();
     }
 
 
@@ -109,7 +110,7 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
 
 
     // This method is triggered when the OnDeleteFromList global event fires
-    public void HandleDeleteItemFromList(ListItem<U> listItem, GameObject listItemGameObject)
+    public void HandleDeleteItemFromList(T listItem, GameObject listItemGameObject)
     {
         int id = (int)listItem.Index;
         list.RemoveAt(id);
@@ -119,10 +120,12 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
         {
             uiController.UpdateListItemTargetPositions(list);
         }
+
+        DeleteListItem(listItem);
     }
 
 
-    public void DeleteListItem()
+    public virtual void DeleteListItem(T listItem)
     {
         // TODO: Delete list item
     }
