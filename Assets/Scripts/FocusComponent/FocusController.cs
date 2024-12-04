@@ -19,16 +19,18 @@ public class FocusController : MonoBehaviour
         
         focusUIController.ShowFocusTimer(focusTime);
         
-        StartCoroutine(focusTime.StartClock());
+        StartCoroutine(focusTime.StartClock(activatedTask));
 
         // TODO: Handle updates to Village System
     }
 
-    public void EndFocusTimer()
+    public void EndFocusTimer(Task completedTask)
     {
         focusUIController.EndFocusTimer(); // Handle UI on timer End
 
-        // TODO: Handle updates to Task System, if there are any
+        focusTime.OnTimerEnd -= EndFocusTimer;
+
+        completedTask.TriggerOnDelete();
 
         // TODO: Hande updates to Village System
 
