@@ -18,8 +18,6 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     {
         uiController = GetComponent<ListUIController<T, U>>();
         uiController.list = list;
-
-        // ListItem.OnDeleteFromList += HandleDeleteItemFromList;
     }
 
 
@@ -49,6 +47,14 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     }
 
 
+    public void ShowEditListItemPanel(T selectedListItem)
+    {
+        uiController.ShowEditListItemPanel(selectedListItem);
+        uiController.BindDeleteButton(selectedListItem);
+        uiController.BindSaveButton(selectedListItem);
+    }
+
+
     public void CreateNewListItem()
     {    
         T listItem = uiController.InstantiateNewListItem(atIndex);
@@ -72,7 +78,14 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     }
 
 
-    public void AddListItem(T listItem, uint index)
+    public void CancelEditListItem()
+    {
+        uiController.HideEditListItemPanel();
+        uiController.ResetEditListItemPanel();
+    }
+
+
+    public virtual void AddListItem(T listItem, uint index)
     {
         if (index > list.Count)
         {
@@ -97,7 +110,7 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
 
 
     // This method is triggered when the OnDeleteFromList global event fires
-    public void HandleDeleteItemFromList(ListItem<U> listItem, GameObject listItemGameObject)
+    public void HandleDeleteItemFromList(T listItem, GameObject listItemGameObject)
     {
         int id = (int)listItem.Index;
         list.RemoveAt(id);
@@ -107,18 +120,24 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
         {
             uiController.UpdateListItemTargetPositions(list);
         }
+
+        DeleteListItem(listItem);
     }
 
 
-    public void DeleteListItem()
+    public virtual void DeleteListItem(T listItem)
     {
         // TODO: Delete list item
     }
 
 
-    public void EditListItem(T newItemData)
+    public void EditListItem(T selectedListItem)
     {
-        // TODO: Edit list item
+        U newListItemData = uiController.editController.GetListItemFromUI();
+        selectedListItem.SetData(newListItemData);
+        
+        ListItemUIController<T, U> itemUIController = selectedListItem.GetComponent<ListItemUIController<T, U>>();
+        itemUIController.UpdateUIValues(newListItemData);
     }
 
 

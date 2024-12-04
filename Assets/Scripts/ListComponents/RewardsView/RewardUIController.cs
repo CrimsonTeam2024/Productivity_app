@@ -16,4 +16,13 @@ public class RewardUIController : ListItemUIController<Reward, RewardData>
         TierField = (int)reward.RewardTier;
         TimeCost = reward.RewardCost.ToString();
     }
+
+
+    public override void UpdateUIValues(RewardData reward)
+    {
+        TitleField = reward.itemName;
+        DescriptionField = reward.itemDescription;
+        TierField = (int)reward.tier;
+        TimeCost = reward.coinCost.ToString();
+    }
 }

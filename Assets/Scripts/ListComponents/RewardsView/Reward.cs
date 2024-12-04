@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class Reward : ListItem<RewardData>
 {
-    public static event Action<ListItem<RewardData>, GameObject> OnDeleteReward;
-    public static event Action<ListItem<RewardData>, GameObject> OnActivateReward;
+    public event Action<Reward> OnActivateReward;
+    public event Action<Reward> OnEditReward;
+    public event Action<Reward> OnInitEditReward;
+    public event Action<Reward, GameObject> OnDeleteReward;
     RewardUIController uiController;
     
     [SerializeField] private uint _rewardCost; // Coin cost
@@ -23,6 +25,28 @@ public class Reward : ListItem<RewardData>
     {
         get { return _tier; }
         set { _tier = value; }
+    }
+
+
+    void Awake()
+    {
+        uiController = GetComponent<RewardUIController>();
+    }
+
+
+    void Start()
+    {
+        // Get reference to the UI Controller
+        // uiController = GetComponent<TaskUIController>();
+        if (uiController == null)
+        {
+            Debug.LogError("RewardUIController is not attached to the Task GameObject!", this);
+            return;
+        }
+
+        // Subscribe to the activate button's event
+        uiController.activateButton.onClick.AddListener(TriggerOnActivate);
+        uiController.editButton.onClick.AddListener(TriggerOnInitEdit);
     }
 
 
@@ -72,7 +96,17 @@ public class Reward : ListItem<RewardData>
 
     public override void TriggerOnActivate()
     {
-        OnActivateReward?.Invoke(this, gameObject);
+        OnActivateReward?.Invoke(this);
+    }
+
+    public override void TriggerOnEdit()
+    {
+        OnEditReward?.Invoke(this);
+    }
+
+    public override void TriggerOnInitEdit()
+    {
+        OnInitEditReward?.Invoke(this);
     }
 
     public override void SetData(RewardData data)
@@ -81,5 +115,16 @@ public class Reward : ListItem<RewardData>
         ItemDescription = data.itemDescription;
         RewardTier = data.tier;
         RewardCost = (uint)data.coinCost;
+    }
+
+
+    public override RewardData GetData()
+    {
+        return new RewardData {
+            itemName = ItemName,
+            itemDescription = ItemDescription,
+            tier = RewardTier,
+            coinCost = (int)RewardCost
+        };
     }
 }

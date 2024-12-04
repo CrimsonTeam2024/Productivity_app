@@ -4,7 +4,10 @@ public class RewardsController : ListController<Reward, RewardData>
 
     void Awake()
     {
-        Reward.OnDeleteReward += HandleDeleteItemFromList;
+        // Reward.OnDeleteReward += HandleDeleteItemFromList;
+        // Reward.OnActivateReward += ActivateListItem;
+        // Reward.OnEditReward += EditListItem;
+        // Reward.OnInitEditReward += ShowEditListItemPanel;
     }
     
 
@@ -15,6 +18,17 @@ public class RewardsController : ListController<Reward, RewardData>
         // Prompt user to make sure they want to spend coins
 
         // If yes then call CompleteListItem()
+    }
+
+    public override void AddListItem(Reward reward, uint index)
+    {
+        base.AddListItem(reward, index);
+
+        // Subscribe to instance-level events
+        reward.OnActivateReward += ActivateListItem;
+        reward.OnEditReward += EditListItem;
+        reward.OnInitEditReward += ShowEditListItemPanel;
+        reward.OnDeleteReward += HandleDeleteItemFromList;
     }
 
 

@@ -11,8 +11,10 @@ public class TasksController : ListController<Task, TaskData>
 
     void Awake()
     {
-        Task.OnDeleteTask += HandleDeleteItemFromList;
-        Task.OnActivateTask += ActivateListItem;
+        // Task.OnDeleteTask += HandleDeleteItemFromList;
+        // Task.OnActivateTask += ActivateListItem;
+        // Task.OnEditTask += EditListItem;
+        // Task.OnInitEditTask += ShowEditListItemPanel;
     }
 
 
@@ -57,6 +59,28 @@ public class TasksController : ListController<Task, TaskData>
             default:
                 throw new ArgumentOutOfRangeException(nameof(selectedListItem.TaskTier), "Unexpected TaskTier value.");
         }
+    }
+
+    public override void AddListItem(Task task, uint index)
+    {
+        base.AddListItem(task, index);
+
+        // Subscribe to instance-level events
+        task.OnActivateTask += ActivateListItem;
+        task.OnEditTask += EditListItem;
+        task.OnInitEditTask += ShowEditListItemPanel;
+        task.OnDeleteTask += HandleDeleteItemFromList;
+    }
+
+    public override void DeleteListItem(Task task)
+    {
+        base.DeleteListItem(task);
+
+        // Subscribe to instance-level events
+        task.OnActivateTask -= ActivateListItem;
+        task.OnEditTask -= EditListItem;
+        task.OnInitEditTask -= ShowEditListItemPanel;
+        task.OnDeleteTask -= HandleDeleteItemFromList;
     }
 
 

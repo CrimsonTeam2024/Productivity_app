@@ -9,6 +9,7 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     public List<T> list;
     public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
+    public GameObject editListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
     public GameObject listContainer;
     public float listPadding; // List spacing
@@ -17,15 +18,17 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     public float listTopPadding;
     public float listBottomPadding;
     float listItemHeight;
+    
+    public NewListItemPanelUIController<U> newListItemUIController;
+    public EditListItemPanelUIController<U> editController;
 
-    void Awake()
-    {
-        listItemDetailsPanel.SetActive(false);
-        newListItemPanel.SetActive(false);
-    }
 
     void Start()
     {
+        listItemDetailsPanel.SetActive(false);
+        newListItemPanel.SetActive(false);
+        editListItemPanel.SetActive(false);
+
         listContainerRect = listContainer.GetComponent<RectTransform>();    
         RectTransform rect = listItemPrefab.transform as RectTransform;
         listItemHeight = rect.sizeDelta.y;
@@ -65,6 +68,23 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     }
 
 
+    public abstract void ShowEditListItemPanel(T listItem);
+    
+    
+    public void BindDeleteButton(T listItem)
+    {
+        editController.deleteButton.onClick.AddListener(HideEditListItemPanel);
+        editController.deleteButton.onClick.AddListener(listItem.TriggerOnDelete);
+    }
+
+
+    public void BindSaveButton(T listItem)
+    {
+        editController.saveButton.onClick.AddListener(HideEditListItemPanel);
+        editController.saveButton.onClick.AddListener(listItem.TriggerOnEdit);
+    }
+
+
     public void HideCreateListItemPanel()
     {
         newListItemPanel.SetActive(false);
@@ -73,43 +93,22 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     }
 
 
+    public void HideEditListItemPanel()
+    {
+        editListItemPanel.SetActive(false);
+        // TODO: Should also reset the newListItemPanel input text
+        // TODO: After instantiation, animate the reward details screen pop up
+    }
+
+
+    public void ResetEditListItemPanel()
+    {
+        editController.saveButton.onClick.RemoveAllListeners();
+        editController.deleteButton.onClick.RemoveAllListeners();
+    }
+
+
     public abstract U GetNewListItemDataFromUI();
-
-
-    // public Dictionary<string, string> CreateNewListItem()
-    // {
-    //     if (!newListItemPanel.activeInHierarchy)
-    //     {
-    //         Debug.LogError("Cannot create new list item because "
-    //                         + "the UI view responsible for this is not active in the heirarchy.");
-    //         return null;
-    //     }  
-
-    //     TMP_InputField[] inputFields = newListItemPanel.GetComponentsInChildren<TMP_InputField>();
-    //     Dictionary<string, string> placeholderToTextMap = new Dictionary<string, string>();
-        
-    //     // Generate a dictionary of input field names and their values, 
-    //     // and match them to Task or Reward properties
-    //     foreach (TMP_InputField inputField in inputFields)
-    //     {
-    //         if (inputField.placeholder is TMP_Text placeholderText)
-    //         {
-    //             string placeholder = placeholderText.text;
-    //             string inputText = string.IsNullOrEmpty(inputField.text) ? placeholder : inputField.text;
-
-    //             if (!placeholderToTextMap.ContainsKey(placeholder))
-    //             {
-    //                 placeholderToTextMap[placeholder] = inputText;
-    //             }
-    //         }
-    //         else
-    //         {
-    //             Debug.LogWarning("Placeholder is not a TMP_Text component.");
-    //         }
-    //     }
-
-    //     return placeholderToTextMap;
-    // }
 
 
     public T InstantiateNewListItem(uint index)

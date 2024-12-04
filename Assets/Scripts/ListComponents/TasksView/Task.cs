@@ -1,13 +1,14 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 
 public class Task : ListItem<TaskData>
 {
-    public static event Action<Task> OnActivateTask;
-    public static event Action<Task, GameObject> OnDeleteTask;
+    public event Action<Task> OnActivateTask;
+    public event Action<Task> OnEditTask;
+    public event Action<Task> OnInitEditTask;
+    public event Action<Task, GameObject> OnDeleteTask;
     TaskUIController uiController;
 
     [SerializeField] uint _timeCost = 10; // seconds
@@ -44,6 +45,7 @@ public class Task : ListItem<TaskData>
 
         // Subscribe to the activate button's event
         uiController.activateButton.onClick.AddListener(TriggerOnActivate);
+        uiController.editButton.onClick.AddListener(TriggerOnInitEdit);
     }
 
 
@@ -57,45 +59,6 @@ public class Task : ListItem<TaskData>
     }
 
 
-    // Initialization method for dynamic setup
-    // public void Initialize(Dictionary<string, string> keyValuePairs)
-    // {
-    //     foreach (var pair in keyValuePairs)
-    //     {
-    //         string key = pair.Key;
-
-    //         if (key.Contains("Name"))
-    //         {
-    //             ItemName = pair.Value;
-    //             continue;
-    //         }
-
-    //         if (key.Contains("Description"))
-    //         {
-    //             ItemDescription = pair.Value;
-    //             continue;
-    //         }
-
-    //         if (key.Contains("Cost"))
-    //         {
-    //             if (uint.TryParse(pair.Value, out uint result))
-    //             {
-    //                 TimeCost = result;
-    //             }
-    //             continue;
-    //         }
-
-    //         if (key.Contains("Tier"))
-    //         {
-    //             if (Enum.TryParse(pair.Value, out TaskTier tier))
-    //             {
-    //                 TaskTier = tier;
-    //             }
-    //             continue;
-    //         }
-    //     }
-    // }
-
     public override void SetData(TaskData taskData)
     {
         ItemName = taskData.itemName;
@@ -104,6 +67,17 @@ public class Task : ListItem<TaskData>
         TimeCost = (uint)taskData.timeCost;
 
         uiController.UpdateUIValues(this);
+    }
+
+
+    public override TaskData GetData()
+    {
+        return new TaskData {
+            itemName = ItemName,
+            itemDescription = ItemDescription,
+            tier = TaskTier,
+            timeCost = (int)TimeCost
+        };
     }
 
 
@@ -117,5 +91,19 @@ public class Task : ListItem<TaskData>
     {
         print("Activating Task!");
         OnActivateTask?.Invoke(this);
+    }
+
+
+    public override void TriggerOnEdit()
+    {
+        print("Edited task.");
+        OnEditTask?.Invoke(this);
+    }
+
+
+    public override void TriggerOnInitEdit()
+    {
+        print("Editing task.");
+        OnInitEditTask?.Invoke(this);
     }
 }
