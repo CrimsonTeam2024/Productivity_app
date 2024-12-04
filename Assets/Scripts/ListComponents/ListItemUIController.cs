@@ -1,9 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental; // Required for Button component
 
 
 
@@ -12,7 +10,8 @@ public abstract class ListItemUIController<T, U> : MonoBehaviour where T : ListI
     [SerializeField] TMP_Text titleField;
     [SerializeField] TMP_Text descriptionField;
     [SerializeField] TMP_Text tierField;
-    public Button activateButton; // Assign this in the Unity Editor
+    public Button activateButton;
+    public Button editButton;
 
     public string TitleField { get { return titleField.text; } protected set { titleField.text = value; } }
     public string DescriptionField { get { return descriptionField.text; } protected set { descriptionField.text = value; } }
@@ -35,4 +34,5 @@ public abstract class ListItemUIController<T, U> : MonoBehaviour where T : ListI
 
 
     public abstract void UpdateUIValues(T listItem);
+    public abstract void UpdateUIValues(U listItem);
 }

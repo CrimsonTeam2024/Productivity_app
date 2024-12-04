@@ -43,6 +43,8 @@ public abstract class ListItem<T> : MonoBehaviour where T : ListItemData
 
     public abstract void TriggerOnDelete();
     public abstract void TriggerOnActivate();
+    public abstract void TriggerOnEdit();
+    public abstract void TriggerOnInitEdit();
 
 
     public void UpdateTargetPosition(float topPadding, float itemPadding)
@@ -58,4 +60,5 @@ public abstract class ListItem<T> : MonoBehaviour where T : ListItemData
 
 
     public abstract void SetData(T data);
+    public abstract T GetData();
 }

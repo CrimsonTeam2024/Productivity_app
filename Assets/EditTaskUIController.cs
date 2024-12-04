@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine.UI;
 
 
 
-public class NewTaskUIController : NewListItemPanelUIController<TaskData>
+public class EditTaskUIController : EditListItemPanelUIController<TaskData>
 {
     public Slider timeCostSlider;
     SliderController sliderController;
@@ -24,6 +25,15 @@ public class NewTaskUIController : NewListItemPanelUIController<TaskData>
         };
         
         return taskData;
+    }
+
+
+    public override void UpdateUIValues(TaskData taskData)
+    {
+        itemTitle.text = taskData.itemName;
+        itemDescription.text = taskData.itemDescription;
+        itemTier.value = (int)taskData.tier;
+        sliderController.Value = (int)taskData.tier;
     }
 
     // Expose methods that validate whether user input in input fields is valid

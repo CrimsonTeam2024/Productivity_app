@@ -98,6 +98,7 @@ MonoBehaviour:
   descriptionField: {fileID: 4149950251971457719}
   tierField: {fileID: 3647729215966858997}
   activateButton: {fileID: 4273454053116860970}
+  editButton: {fileID: 8915211667293212437}
   timeCost: {fileID: 8808106557277030081}
 --- !u!1 &1557648945934848631
 GameObject:
@@ -539,19 +540,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3707524987358142569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7134328407492973378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,19 +1106,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7955163177970702025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1339400206688406945
 MonoBehaviour:
   m_ObjectHideFlags: 0

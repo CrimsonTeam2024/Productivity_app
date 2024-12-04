@@ -18,8 +18,6 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     {
         uiController = GetComponent<ListUIController<T, U>>();
         uiController.list = list;
-
-        // ListItem.OnDeleteFromList += HandleDeleteItemFromList;
     }
 
 
@@ -49,6 +47,14 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     }
 
 
+    public void ShowEditListItemPanel(T selectedListItem)
+    {
+        uiController.ShowEditListItemPanel(selectedListItem);
+        uiController.BindDeleteButton(selectedListItem);
+        uiController.BindSaveButton(selectedListItem);
+    }
+
+
     public void CreateNewListItem()
     {    
         T listItem = uiController.InstantiateNewListItem(atIndex);
@@ -72,7 +78,13 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     }
 
 
-    public void AddListItem(T listItem, uint index)
+    public void CancelEditListItem()
+    {
+        uiController.HideEditListItemPanel();
+    }
+
+
+    public virtual void AddListItem(T listItem, uint index)
     {
         if (index > list.Count)
         {
@@ -116,9 +128,13 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     }
 
 
-    public void EditListItem(T newItemData)
+    public void EditListItem(T selectedListItem)
     {
-        // TODO: Edit list item
+        U newListItemData = uiController.editController.GetListItemFromUI();
+        selectedListItem.SetData(newListItemData);
+        
+        ListItemUIController<T, U> itemUIController = selectedListItem.GetComponent<ListItemUIController<T, U>>();
+        itemUIController.UpdateUIValues(newListItemData);
     }
 
 
