@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // TODO: This needs to be expanded to include the oracle system
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set;}
+    public GameObject TaskListView;
+    // public GameObject RewardView;
+    // public GameObject VillageView;
+    // public GameObject UpgradeView;
 
     // TODO: Consider separate classes for the following values
     public double xp;
@@ -39,19 +42,36 @@ public class GameManager : MonoBehaviour
 
     // Initialize Scene Swtiching method, may be modified later
     public void LoadTaskScene() {
-        SceneManager.LoadScene("TaskScene");
+        if (TaskListView == null) {
+            Debug.LogError("TaskListView is not set in the GameManager!");
+            return;
+        }
+        TaskListView.SetActive(true);
+        // TODO: set the other three views as deactive if any of them is active
+        // RewardView.SetActive(false);
+        // VillageView.SetActive(false);
+        // UpgradeView.SetActive(false);
     }
 
     public void LoadRewardScene() {
-        SceneManager.LoadScene("RewardScene");
+        // RewardView.SetActive(true);
+        // TaskListView.SetActive(false);
+        // VillageView.SetActive(false);
+        // UpgradeView.SetActive(false);
     }
 
     public void LoadVillageScene() {
-        SceneManager.LoadScene("VillageScene");
+        // VillageView.SetActive(true);
+        TaskListView.SetActive(false);
+        // RewardView.SetActive(false);
+        // UpgradeView.SetActive(false);
     }
 
     public void LoadUpgradeScene() {
-        SceneManager.LoadScene("UpgradeScene");
+        // UpgradeView.SetActive(true);
+        // TaskListView.SetActive(false);
+        // RewardView.SetActive(false);
+        // VillageView.SetActive(false);
     }
 
     public void SaveGameData() {
