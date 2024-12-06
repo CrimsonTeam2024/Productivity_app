@@ -106,4 +106,10 @@ public class Task : ListItem<TaskData>
         print("Editing task.");
         OnInitEditTask?.Invoke(this);
     }
+
+    public override void TriggerOnComplete()
+    {
+        // leave it empty becuase complete is triggered by focus timer
+        throw new NotImplementedException();
+    }
 }

@@ -1,5 +1,12 @@
 public class RewardsUIController : ListUIController<Reward, RewardData>
 {   
+
+    void Awake()
+    {
+        newListItemUIController = newListItemPanel.GetComponent<NewRewardUIController>();
+        editController = editListItemPanel.GetComponent<EditRewardUIController>();     
+    }
+
     public override RewardData GetNewListItemDataFromUI()
     {
         return newListItemUIController.GetListItemFromUI();        

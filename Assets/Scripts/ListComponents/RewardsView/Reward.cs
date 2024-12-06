@@ -10,6 +10,8 @@ public class Reward : ListItem<RewardData>
     public event Action<Reward> OnEditReward;
     public event Action<Reward> OnInitEditReward;
     public event Action<Reward, GameObject> OnDeleteReward;
+    public event Action<Reward> OnCompleteReward;
+
     RewardUIController uiController;
     
     [SerializeField] private uint _rewardCost; // Coin cost
@@ -107,6 +109,11 @@ public class Reward : ListItem<RewardData>
     public override void TriggerOnInitEdit()
     {
         OnInitEditReward?.Invoke(this);
+    }
+
+    public override void TriggerOnComplete()
+    {
+        OnCompleteReward?.Invoke(this);
     }
 
     public override void SetData(RewardData data)

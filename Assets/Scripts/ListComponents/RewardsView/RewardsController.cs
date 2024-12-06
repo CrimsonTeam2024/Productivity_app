@@ -13,11 +13,17 @@ public class RewardsController : ListController<Reward, RewardData>
 
     public override void ActivateListItem(Reward reward)
     {
-        // Check if user has enough coins to unlock reward
-
-        // Prompt user to make sure they want to spend coins
-
-        // If yes then call CompleteListItem()
+        if (gameManager.coins >= reward.RewardCost)
+        {
+            CompleteListItem(reward);
+        }
+        else
+        {
+            // Prompt user to earn more coins
+            /*
+            uiController.ShowNotification("Insufficient coins", "You need more coins to unlock this reward.");
+            */
+        }
     }
 
     public override void AddListItem(Reward reward, uint index)
@@ -32,13 +38,15 @@ public class RewardsController : ListController<Reward, RewardData>
     }
 
 
-    public override void CompleteListItem()
+    public override void CompleteListItem(Reward reward)
     {
         // Deduct coins
+        gameManager.coins -= reward.RewardCost;
 
         // Animate celebration for completing reward
 
         // Delete reward
+        reward.TriggerOnDelete();
     }
     
 

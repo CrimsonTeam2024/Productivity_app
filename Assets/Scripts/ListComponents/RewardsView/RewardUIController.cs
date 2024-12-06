@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RewardUIController : ListItemUIController<Reward, RewardData>
 {
-    [SerializeField] TMP_Text timeCost;
-    public string TimeCost { get { return timeCost.text; } private set { timeCost.text = value;} }
+    [SerializeField] TMP_Text coinCost;
+    public string CoinCost { get { return coinCost.text; } private set { coinCost.text = value;} }
     
 
     public override void UpdateUIValues(Reward reward)
@@ -14,7 +14,7 @@ public class RewardUIController : ListItemUIController<Reward, RewardData>
         TitleField = reward.ItemName;
         DescriptionField = reward.ItemDescription;
         TierField = (int)reward.RewardTier;
-        TimeCost = reward.RewardCost.ToString();
+        CoinCost = reward.RewardCost.ToString();
     }
 
 
@@ -23,6 +23,6 @@ public class RewardUIController : ListItemUIController<Reward, RewardData>
         TitleField = reward.itemName;
         DescriptionField = reward.itemDescription;
         TierField = (int)reward.tier;
-        TimeCost = reward.coinCost.ToString();
+        CoinCost = reward.coinCost.ToString();
     }
 }
