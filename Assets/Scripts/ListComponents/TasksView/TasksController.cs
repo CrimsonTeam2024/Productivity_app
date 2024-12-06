@@ -40,20 +40,20 @@ public class TasksController : ListController<Task, TaskData>
         {
             case TaskTier.Easy:
                 // Logic for easy tasks
-                gameManager.coins += 2;
-                gameManager.xp += 100; 
+                GameManager.Instance.coins += 2;
+                GameManager.Instance.xp += 100; 
                 break;
 
             case TaskTier.Medium:
                 // Logic for medium tasks
-                gameManager.coins += 5;
-                gameManager.xp += 200;
+                GameManager.Instance.coins += 5;
+                GameManager.Instance.xp += 200;
                 break;
 
             case TaskTier.Hard:
                 // Logic for hard tasks
-                gameManager.coins += 10;
-                gameManager.xp += 500;
+                GameManager.Instance.coins += 10;
+                GameManager.Instance.xp += 500;
                 break;
 
             default:
