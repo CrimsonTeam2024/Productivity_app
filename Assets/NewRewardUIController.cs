@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class NewRewardUIController : NewListItemPanelUIController<RewardData>
 {
-    public TMP_Dropdown tierDropdown;
     public TMP_Text displayCoinCost;
     void Awake()
     {
-        tierDropdown.GetComponent<TMP_Dropdown>();
-        tierDropdown.onValueChanged.AddListener(UpdateCoinCostDisplay);
+        itemTier.onValueChanged.AddListener(UpdateCoinCostDisplay);
     }
 
     void UpdateCoinCostDisplay(int selectedIndex) {
-        int coins = (tierDropdown.value + 1) * 10;
+        int coins = (itemTier.value + 1) * 10;
         displayCoinCost.text = coins.ToString();
     }
 
