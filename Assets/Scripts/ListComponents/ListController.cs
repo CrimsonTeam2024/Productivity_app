@@ -30,18 +30,6 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     public virtual void CompleteListItem(T listItem) {}
 
 
-    // Reveal list item details view on list item select
-    public abstract void SelectListItem();
-
-    
-    // Hide list item details view
-    public void DeselectListItem()
-    {
-        uiController.HideDetails();
-        selectedListItem = null;
-    }
-
-
     public void ShowNewListItemPanel()
     {
         uiController.ShowNewListItemPanel();

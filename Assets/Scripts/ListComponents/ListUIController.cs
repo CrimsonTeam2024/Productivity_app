@@ -7,7 +7,6 @@ using UnityEngine;
 public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<U> where U : ListItemData
 {
     public List<T> list;
-    public GameObject listItemDetailsPanel;
     public GameObject newListItemPanel;
     public GameObject editListItemPanel;
     public GameObject listItemPrefab; // The actual list item prefab
@@ -19,13 +18,12 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     public float listBottomPadding;
     float listItemHeight;
     
-    public NewListItemPanelUIController<U> newListItemUIController;
-    public EditListItemPanelUIController<U> editController;
-
-
+    [HideInInspector] public NewListItemPanelUIController<U> newListItemUIController;
+    [HideInInspector] public EditListItemPanelUIController<U> editController;
+    
+    
     void Start()
     {
-        listItemDetailsPanel.SetActive(false);
         newListItemPanel.SetActive(false);
         editListItemPanel.SetActive(false);
 
@@ -38,25 +36,6 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     void Update()
     {
         // UpdateListItemPositions(list);
-    }
-
-
-    public void ShowDetailsPanel()
-    {
-        // TODO: Manipulate transform position such that details panel is well positioned
-        
-        listItemDetailsPanel.SetActive(true);
-        // TODO: After instantiation, animate the reward details screen pop up
-    }
-
-
-    // Method to hide details
-    public void HideDetails()
-    {
-        if (listItemDetailsPanel != null)
-        {
-            Destroy(listItemDetailsPanel);
-        }
     }
 
 

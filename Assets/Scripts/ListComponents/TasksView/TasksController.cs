@@ -82,10 +82,4 @@ public class TasksController : ListController<Task, TaskData>
         task.OnInitEditTask -= ShowEditListItemPanel;
         task.OnDeleteTask -= HandleDeleteItemFromList;
     }
-
-
-    public override void SelectListItem()
-    {
-        TasksUIController.ShowDetailsPanel();
-    }
 }

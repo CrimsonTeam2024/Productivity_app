@@ -1,15 +1,17 @@
 using TMPro;
-using UnityEngine;
 
 
 
 public class NewRewardUIController : NewListItemPanelUIController<RewardData>
 {
     public TMP_Text displayCoinCost;
+
+
     void Awake()
     {
         itemTier.onValueChanged.AddListener(UpdateCoinCostDisplay);
     }
+
 
     void UpdateCoinCostDisplay(int selectedIndex) {
         int coins = (itemTier.value + 1) * 10;
