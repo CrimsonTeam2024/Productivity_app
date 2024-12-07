@@ -53,10 +53,4 @@ public class RewardsController : ListController<Reward, RewardData>
         // Delete reward
         reward.TriggerOnDelete();
     }
-    
-
-    public override void SelectListItem()
-    {
-        rewardsUIController.ShowDetailsPanel();
-    }
 }
