@@ -26,19 +26,8 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
 
 
     // What happens when user completes list item
-    public abstract void CompleteListItem();
-
-
-    // Reveal list item details view on list item select
-    public abstract void SelectListItem();
-
-    
-    // Hide list item details view
-    public void DeselectListItem()
-    {
-        uiController.HideDetails();
-        selectedListItem = null;
-    }
+    public virtual void CompleteListItem() {}
+    public virtual void CompleteListItem(T listItem) {}
 
 
     public void ShowNewListItemPanel()

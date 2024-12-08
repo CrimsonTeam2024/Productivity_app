@@ -46,6 +46,8 @@ public abstract class ListItem<T> : MonoBehaviour where T : ListItemData
     public abstract void TriggerOnEdit();
     public abstract void TriggerOnInitEdit();
 
+    public abstract void TriggerOnComplete();
+
 
     public void UpdateTargetPosition(float topPadding, float itemPadding)
     {

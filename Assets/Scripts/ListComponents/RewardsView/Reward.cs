@@ -10,6 +10,8 @@ public class Reward : ListItem<RewardData>
     public event Action<Reward> OnEditReward;
     public event Action<Reward> OnInitEditReward;
     public event Action<Reward, GameObject> OnDeleteReward;
+    public event Action<Reward> OnCompleteReward;
+
     RewardUIController uiController;
     
     [SerializeField] private uint _rewardCost; // Coin cost
@@ -49,7 +51,7 @@ public class Reward : ListItem<RewardData>
         uiController.editButton.onClick.AddListener(TriggerOnInitEdit);
     }
 
-
+    /*
     // Initialization method for dynamic setup
     public void Initialize(Dictionary<string, string> keyValuePairs)
     {
@@ -88,6 +90,7 @@ public class Reward : ListItem<RewardData>
             }
         }
     }
+    */
 
     public override void TriggerOnDelete()
     {
@@ -109,12 +112,28 @@ public class Reward : ListItem<RewardData>
         OnInitEditReward?.Invoke(this);
     }
 
+    public override void TriggerOnComplete()
+    {
+        OnCompleteReward?.Invoke(this);
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe from the UI Controller event to avoid memory leaks
+        if (uiController != null)
+        {
+            uiController.activateButton.onClick.RemoveListener(TriggerOnActivate);
+        }
+    }
+
     public override void SetData(RewardData data)
     {
         ItemName = data.itemName;
         ItemDescription = data.itemDescription;
         RewardTier = data.tier;
         RewardCost = (uint)data.coinCost;
+
+        uiController.UpdateUIValues(this);
     }
 
 

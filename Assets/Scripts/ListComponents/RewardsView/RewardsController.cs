@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
@@ -13,11 +15,20 @@ public class RewardsController : ListController<Reward, RewardData>
 
     public override void ActivateListItem(Reward reward)
     {
-        // Check if user has enough coins to unlock reward
-
-        // Prompt user to make sure they want to spend coins
-
-        // If yes then call CompleteListItem()
+        print(GameManager.Instance);
+        print(GameManager.Instance.coins);
+        Debug.Assert(GameManager.Instance != null, "GameManager is null");
+        if (GameManager.Instance.coins >= reward.RewardCost)
+        {
+            CompleteListItem(reward);
+        }
+        else
+        {
+            // Prompt user to earn more coins
+            /*
+            uiController.ShowNotification("Insufficient coins", "You need more coins to unlock this reward.");
+            */
+        }
     }
 
     public override void AddListItem(Reward reward, uint index)
@@ -32,18 +43,14 @@ public class RewardsController : ListController<Reward, RewardData>
     }
 
 
-    public override void CompleteListItem()
+    public override void CompleteListItem(Reward reward)
     {
         // Deduct coins
+        GameManager.Instance.coins -= reward.RewardCost;
 
         // Animate celebration for completing reward
 
         // Delete reward
-    }
-    
-
-    public override void SelectListItem()
-    {
-        rewardsUIController.ShowDetailsPanel();
+        reward.TriggerOnDelete();
     }
 }
