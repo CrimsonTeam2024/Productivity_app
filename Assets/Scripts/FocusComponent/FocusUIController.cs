@@ -4,6 +4,8 @@ using UnityEngine;
 public class FocusUIController : MonoBehaviour
 {
     public GameObject focusTimerObject;
+    public GameObject listItemPanel; // panel of list to be hidden from the inspector
+
     
     // TODO: Consider whether there is a better way of getting focusTimerText, 
     //       than defining it in the Unity inspector
@@ -22,6 +24,10 @@ public class FocusUIController : MonoBehaviour
             focusTimerText.text = _timer.ToString();
             _timer.OnTimerTick += UpdateTimerText;//suscribe to the event to update the text
 
+        }
+        if (listItemPanel != null)
+        {
+            listItemPanel.SetActive(false);
         }
     }
 
@@ -47,6 +53,13 @@ public class FocusUIController : MonoBehaviour
         {
             focusTimerObject.SetActive(false);
             isTimerShown = false;
+        }
+
+
+        // Show the Scroll View (listItemPanel) again
+        if (listItemPanel != null)
+        {
+            listItemPanel.SetActive(true);
         }
     }
 }
