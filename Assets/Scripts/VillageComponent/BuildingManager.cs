@@ -13,6 +13,7 @@ public class BuildingManager : MonoBehaviour
 
     void Start()
     {
+
         // Assign terrainTilemap (if not)
         if (terrainTilemap == null)
         {
@@ -22,13 +23,40 @@ public class BuildingManager : MonoBehaviour
         PlaceInitialBuilding();
     }
 
+    Vector3 GetGridCenter()
+    // Find center pos of Terrain Grid GameObject
+    {
+        BoundsInt cellBounds = terrainTilemap.cellBounds;
+
+        Vector3Int centerCellPosition = new Vector3Int(
+            cellBounds.xMin + cellBounds.size.x / 2,
+            cellBounds.yMin + cellBounds.size.y / 2,
+            0
+        );
+
+        Vector3 worldCenterPosition = terrainTilemap.CellToWorld(centerCellPosition);
+
+        Vector3 cellCenterOffset = new Vector3(terrainTilemap.cellSize.x / 2, terrainTilemap.cellSize.y / 2, 0);
+        worldCenterPosition += cellCenterOffset;
+
+        return worldCenterPosition;
+    }
+
+
     void PlaceInitialBuilding()
     {
-        Vector3 centerPosition = Vector3.zero; // Adjust to center
-        Vector2Int gridPosition = GridPositionFromWorld(centerPosition);
+        Vector3 centerPosition = GetGridCenter();
+        // get placement positions relative to terrain grid
+        Vector3Int cellPosition = terrainTilemap.WorldToCell(centerPosition);
+        Vector3 alignedPosition = terrainTilemap.CellToWorld(cellPosition);
 
-        Instantiate(initialBuildingPrefab, centerPosition, Quaternion.identity, transform);
-        occupiedPositions.Add(gridPosition);
+        alignedPosition.z = -0.1f; // for above-grid layering
+        // TODO: ensure later that this scales with (x,y)++
+
+        GameObject initialBuildingInstance = Instantiate(initialBuildingPrefab, alignedPosition, Quaternion.identity, transform);
+        initialBuildingInstance.transform.localScale = Vector3.one * 25; // some unclear scaling issues...
+        initialBuildingInstance.SetActive(true);
+        occupiedPositions.Add(new Vector2Int(cellPosition.x, cellPosition.y));
     }
 
     public Vector2Int GridPositionFromWorld(Vector3 worldPosition)
