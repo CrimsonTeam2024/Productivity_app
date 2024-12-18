@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 160287}
-  - component: {fileID: 160288}
   - component: {fileID: 160289}
+  - component: {fileID: 160288}
   m_Layer: 5
   m_Name: TaskListView
   m_TagString: Untagged
@@ -169,15 +169,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 160286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cfa516508c5be48a6f3cedbf35ba74, type: 3}
+  m_Script: {fileID: 11500000, guid: 769210f5f153854458bb6feb0aef124b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   list: []
-  selectedListItem: {fileID: 0}
-  toggleDetail: 0
-  gameManager: {fileID: 0}
-  atIndex: 0
-  focusController: {fileID: 1294667915}
+  newListItemPanel: {fileID: 3094891608381039316}
+  editListItemPanel: {fileID: 7337915818959109989}
+  listItemPrefab: {fileID: 451946175099261037, guid: 4d277efe1870b22449215419be7a5f00, type: 3}
+  listContainer: {fileID: 1917928885}
+  listPadding: 20
+  listTopPadding: 50
+  listBottomPadding: 50
+  newListItemUIController: {fileID: 0}
+  editController: {fileID: 0}
 --- !u!114 &160289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,44 +191,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 160286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769210f5f153854458bb6feb0aef124b, type: 3}
+  m_Script: {fileID: 11500000, guid: 11cfa516508c5be48a6f3cedbf35ba74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  listItemDetailsPanel: {fileID: 0}
-  newListItemPanel: {fileID: 352196736}
-  editListItemPanel: {fileID: 1259527143}
-  listItemPrefab: {fileID: 451946175099261037, guid: 4d277efe1870b22449215419be7a5f00, type: 3}
-  listContainer: {fileID: 1917928885}
-  listPadding: 20
-  listTopPadding: 50
-  listBottomPadding: 50
+  list: []
+  selectedListItem: {fileID: 0}
+  toggleDetail: 0
+  gameManager: {fileID: 289227377}
+  atIndex: 0
   newListItemUIController: {fileID: 0}
   editController: {fileID: 0}
+  focusController: {fileID: 1294667915}
 --- !u!1 &69782827
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00006866455}
+  m_AnchoredPosition: {x: 0, y: -0.00012186907}
   m_SizeDelta: {x: 0, y: 1024.939}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &168663901
@@ -391,6 +368,10 @@ PrefabInstance:
     - target: {fileID: 708239137919716651, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
       propertyPath: m_SizeDelta.x
       value: 653.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280533262986352945, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4095849473327248997, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
       propertyPath: m_Name
@@ -875,11 +856,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326611980}
   m_CullTransparentMesh: 1
---- !u!1 &352196736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8950076736960490524, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
-  m_PrefabInstance: {fileID: 3094891608381039315}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &352196737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6583107699612070160, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
@@ -1383,7 +1359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 3694, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &671634132
@@ -1437,7 +1413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &681427333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1449,12 +1425,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 794873544}
   m_Father: {fileID: 2037107877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2537, y: 0}
+  m_AnchoredPosition: {x: 2931, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &684945402
@@ -1629,7 +1606,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 326611982}
   m_HandleRect: {fileID: 326611981}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2079,8 +2056,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 160288}
-        m_TargetAssemblyTypeName: ListController`1[[Task, Assembly-CSharp
+      - m_Target: {fileID: 160289}
+        m_TargetAssemblyTypeName: ListController`2[[Task, Assembly-CSharp
         m_MethodName: ShowNewListItemPanel
         m_Mode: 1
         m_Arguments:
@@ -2129,6 +2106,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792865868}
   m_CullTransparentMesh: 1
+--- !u!1 &794873543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794873544}
+  m_Layer: 5
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &794873544
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794873543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 681427333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807681362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5652101964470512375, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
@@ -2522,11 +2534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1259527143 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4095849473327248997, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
-  m_PrefabInstance: {fileID: 7337915818959109988}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1259527147 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7360009846652600202, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
@@ -2655,6 +2662,8 @@ MonoBehaviour:
   toggleDetail: 0
   gameManager: {fileID: 0}
   atIndex: 0
+  newListItemUIController: {fileID: 0}
+  editController: {fileID: 0}
 --- !u!114 &1358396589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,7 +2677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: []
-  listItemDetailsPanel: {fileID: 0}
   newListItemPanel: {fileID: 851671861}
   editListItemPanel: {fileID: 185256214}
   listItemPrefab: {fileID: 451946175099261037, guid: 93b80d9356811dc4f990ef9b33a8e3ba, type: 3}
@@ -2799,6 +2807,14 @@ PrefabInstance:
     - target: {fileID: 1658590513797021538, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3446864100195184693, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919431179058712408, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563480708380912940, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_text
@@ -3186,13 +3202,48 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2037107877}
   - {fileID: 1231717803}
+  - {fileID: 2037107877}
   m_Father: {fileID: 1440145756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1709877357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709877358}
+  m_Layer: 5
+  m_Name: OracleView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1709877358
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709877357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2037107877}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2144, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1742433178
@@ -3278,7 +3329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 160288}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ListController`1[[TaskData, Assembly-CSharp
         m_MethodName: ShowNewListItemPanel
         m_Mode: 1
@@ -3479,7 +3530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0007718323}
+  m_AnchoredPosition: {x: 0, y: 0.000649715}
   m_SizeDelta: {x: 0, y: 1024.939}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1980686881
@@ -3667,6 +3718,7 @@ RectTransform:
   - {fileID: 160287}
   - {fileID: 1358396587}
   - {fileID: 1294667914}
+  - {fileID: 1709877358}
   - {fileID: 681427333}
   - {fileID: 665336201}
   m_Father: {fileID: 1680949751}
@@ -3776,7 +3828,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 39844062843799776, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39844062843799776, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3784,20 +3836,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 146989130995591761, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 146989130995591761, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3446864100195184693, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3446864100195184693, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 160288}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919431179058712408, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5919431179058712408, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 160288}
+      objectReference: {fileID: 0}
     - target: {fileID: 6583107699612070160, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3884,13 +3944,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8950076736960490524, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+--- !u!1 &3094891608381039316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8950076736960490524, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
+  m_PrefabInstance: {fileID: 3094891608381039315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7337915818959109988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3912,9 +3977,13 @@ PrefabInstance:
       value: 660
       objectReference: {fileID: 0}
     - target: {fileID: 3280533262986352945, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280533262986352945, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 160288}
+      objectReference: {fileID: 0}
     - target: {fileID: 4095849473327248997, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
       propertyPath: m_Name
       value: EditTaskPanel
@@ -4024,6 +4093,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
+--- !u!1 &7337915818959109989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4095849473327248997, guid: 7cddaa844e9270441b3002f65be967ba, type: 3}
+  m_PrefabInstance: {fileID: 7337915818959109988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

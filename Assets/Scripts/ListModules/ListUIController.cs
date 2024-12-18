@@ -17,7 +17,7 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
     public float listTopPadding;
     public float listBottomPadding;
     float listItemHeight;
-    
+
     [HideInInspector] public NewListItemPanelUIController<U> newListItemUIController;
     [HideInInspector] public EditListItemPanelUIController<U> editController;
     
@@ -48,20 +48,6 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
 
 
     public abstract void ShowEditListItemPanel(T listItem);
-    
-    
-    public void BindDeleteButton(T listItem)
-    {
-        editController.deleteButton.onClick.AddListener(HideEditListItemPanel);
-        editController.deleteButton.onClick.AddListener(listItem.TriggerOnDelete);
-    }
-
-
-    public void BindSaveButton(T listItem)
-    {
-        editController.saveButton.onClick.AddListener(HideEditListItemPanel);
-        editController.saveButton.onClick.AddListener(listItem.TriggerOnEdit);
-    }
 
 
     public void HideCreateListItemPanel()
@@ -77,13 +63,6 @@ public abstract class ListUIController<T, U> : MonoBehaviour where T : ListItem<
         editListItemPanel.SetActive(false);
         // TODO: Should also reset the newListItemPanel input text
         // TODO: After instantiation, animate the reward details screen pop up
-    }
-
-
-    public void ResetEditListItemPanel()
-    {
-        editController.saveButton.onClick.RemoveAllListeners();
-        editController.deleteButton.onClick.RemoveAllListeners();
     }
 
 

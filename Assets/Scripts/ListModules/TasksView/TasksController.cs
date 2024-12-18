@@ -6,15 +6,15 @@ using System;
 public class TasksController : ListController<Task, TaskData>
 {
     public FocusController focusController;
-    TasksUIController TasksUIController;
 
 
-    void Awake()
+    protected override void Start()
     {
-        // Task.OnDeleteTask += HandleDeleteItemFromList;
-        // Task.OnActivateTask += ActivateListItem;
-        // Task.OnEditTask += EditListItem;
-        // Task.OnInitEditTask += ShowEditListItemPanel;
+        base.Start();
+        newListItemUIController = uiController.newListItemPanel.GetComponent<NewTaskUIController>();
+        editController = uiController.editListItemPanel.GetComponent<EditTaskUIController>();
+        uiController.newListItemUIController = newListItemUIController;
+        uiController.editController = editController;
     }
 
 

@@ -2,8 +2,6 @@ public class TasksUIController : ListUIController<Task, TaskData>
 {
     void Awake()
     {
-        newListItemUIController = newListItemPanel.GetComponent<NewTaskUIController>();
-        editController = editListItemPanel.GetComponent<EditTaskUIController>();     
     }
 
 

@@ -12,9 +12,12 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     protected ListUIController<T, U> uiController;
     public GameManager gameManager;
     public uint atIndex = 0;
+    
+    [HideInInspector] public NewListItemPanelUIController<U> newListItemUIController;
+    [HideInInspector] public EditListItemPanelUIController<U> editController;
 
 
-    void Start()
+    protected virtual void Start()
     {
         uiController = GetComponent<ListUIController<T, U>>();
         uiController.list = list;
@@ -33,14 +36,69 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
     public void ShowNewListItemPanel()
     {
         uiController.ShowNewListItemPanel();
+        BindCreateCancelButton();
+        BindCreateSaveButton();
     }
 
 
     public void ShowEditListItemPanel(T selectedListItem)
     {
         uiController.ShowEditListItemPanel(selectedListItem);
-        uiController.BindDeleteButton(selectedListItem);
-        uiController.BindSaveButton(selectedListItem);
+        BindEditDeleteButton(selectedListItem);
+        BindEditCancelButton();
+        BindEditSaveButton(selectedListItem);
+    }
+
+
+    public void BindCreateSaveButton()
+    {
+        newListItemUIController.saveButton.onClick.AddListener(CreateNewListItem);
+    }
+
+
+    public void BindEditCancelButton()
+    {
+        editController.cancelButton.onClick.AddListener(CancelEditListItem);
+    }
+
+
+    public void BindCreateCancelButton()
+    {
+        newListItemUIController.cancelButton.onClick.AddListener(CancelCreateNewListItem);
+    }
+
+
+    public void BindEditDeleteButton(T listItem)
+    {
+        editController.deleteButton.onClick.AddListener(CancelEditListItem);
+        editController.deleteButton.onClick.AddListener(listItem.TriggerOnDelete);
+    }
+
+
+    public void BindEditPanelCancelButton()
+    {
+        editController.cancelButton.onClick.AddListener(CancelEditListItem);
+    }
+
+
+    public void BindEditSaveButton(T listItem)
+    {
+        editController.saveButton.onClick.AddListener(uiController.HideEditListItemPanel);
+        editController.saveButton.onClick.AddListener(listItem.TriggerOnEdit);
+    }
+
+
+    public void ResetEditEventBindings()
+    {
+        editController.saveButton.onClick.RemoveAllListeners();
+        editController.deleteButton.onClick.RemoveAllListeners();
+    }
+
+
+    public void ResetCreateEventBindings()
+    {
+        newListItemUIController.saveButton.onClick.RemoveAllListeners();
+        newListItemUIController.cancelButton.onClick.RemoveAllListeners();
     }
 
 
@@ -57,20 +115,21 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
 
         uiController.UpdateListItemTargetPositions(list);
 
-        uiController.HideCreateListItemPanel();
+        CancelCreateNewListItem();
     }
 
 
     public void CancelCreateNewListItem()
     {
         uiController.HideCreateListItemPanel();
+        ResetCreateEventBindings();
     }
 
 
     public void CancelEditListItem()
     {
         uiController.HideEditListItemPanel();
-        uiController.ResetEditListItemPanel();
+        ResetEditEventBindings();
     }
 
 
@@ -122,7 +181,7 @@ public abstract class ListController<T, U> : MonoBehaviour where T : ListItem<U>
 
     public void EditListItem(T selectedListItem)
     {
-        U newListItemData = uiController.editController.GetListItemFromUI();
+        U newListItemData = editController.GetListItemFromUI();
         selectedListItem.SetData(newListItemData);
         
         ListItemUIController<T, U> itemUIController = selectedListItem.GetComponent<ListItemUIController<T, U>>();
