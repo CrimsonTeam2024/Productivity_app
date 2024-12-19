@@ -3209,6 +3209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   focusedTask: {fileID: 0}
+  focusUIController: {fileID: 1294667916}
 --- !u!114 &1294667916
 MonoBehaviour:
   m_ObjectHideFlags: 0

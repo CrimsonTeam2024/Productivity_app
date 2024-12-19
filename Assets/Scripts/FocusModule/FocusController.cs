@@ -4,12 +4,7 @@ public class FocusController : MonoBehaviour
 {
     public Task focusedTask;
     public Timer focusTime;
-    FocusUIController focusUIController;
-
-    void Awake()
-    {
-        focusUIController = GetComponent<FocusUIController>();
-    }
+    [SerializeField] FocusUIController focusUIController;
 
 
     public void StartFocusTimer(Task activatedTask) // TODO: Connect ListController to this
