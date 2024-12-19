@@ -311,7 +311,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00012186907}
-  m_SizeDelta: {x: 0, y: 1024.939}
+  m_SizeDelta: {x: 0, y: 1174.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &168663901
 GameObject:
@@ -3374,11 +3374,11 @@ MonoBehaviour:
   list: []
   newListItemPanel: {fileID: 851671861}
   editListItemPanel: {fileID: 185256214}
-  listItemPrefab: {fileID: 451946175099261037, guid: 93b80d9356811dc4f990ef9b33a8e3ba, type: 3}
+  listItemPrefab: {fileID: 451946175099261037, guid: 33cd219a08ccd8f4a9386beefd9ab0d5, type: 3}
   listContainer: {fileID: 136913016}
-  listPadding: 20
-  listTopPadding: 50
-  listBottomPadding: 50
+  listPadding: 80
+  listTopPadding: 100
+  listBottomPadding: 0
   newListItemUIController: {fileID: 0}
   editController: {fileID: 0}
 --- !u!1 &1371053222
@@ -4722,8 +4722,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 224.7793}
-  m_SizeDelta: {x: 1080, y: 1260}
+  m_AnchoredPosition: {x: 0, y: 181.89}
+  m_SizeDelta: {x: 1080, y: 1174.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853387483
 MonoBehaviour:
