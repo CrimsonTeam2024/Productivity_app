@@ -4,14 +4,14 @@ public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
 
-    void Awake()
+    protected override void Start()
     {
-        // Reward.OnDeleteReward += HandleDeleteItemFromList;
-        // Reward.OnActivateReward += ActivateListItem;
-        // Reward.OnEditReward += EditListItem;
-        // Reward.OnInitEditReward += ShowEditListItemPanel;
+        base.Start();
+        newListItemUIController = uiController.newListItemPanel.GetComponent<NewRewardUIController>();
+        editController = uiController.editListItemPanel.GetComponent<EditRewardUIController>();
+        uiController.newListItemUIController = newListItemUIController;
+        uiController.editController = editController;
     }
-    
 
     public override void ActivateListItem(Reward reward)
     {
