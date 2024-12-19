@@ -22,7 +22,8 @@ public class TasksController : ListController<Task, TaskData>
     public override void ActivateListItem(Task activatedTask)
     {
         focusController.gameObject.SetActive(true);
-        focusController.StartFocusTimer(activatedTask);
+        focusController.InitFocusSession();
+        // focusController.StartFocusTimer(activatedTask);
         // Opens village manager view and prompts to select build tasks
 
         // After selected, prompt to activate task
