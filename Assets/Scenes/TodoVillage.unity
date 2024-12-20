@@ -5267,7 +5267,8 @@ MonoBehaviour:
   atIndex: 0
   newListItemUIController: {fileID: 0}
   editController: {fileID: 0}
-  popUpBox: {fileID: 0}
+  popUpBox: {fileID: 2040656751}
+  shakeEffect: {fileID: 0}
 --- !u!114 &1358396589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8640,6 +8641,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewTransform: {fileID: 1709877358}
   popupMessagePrefab: {fileID: 3536143604170805361, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
+--- !u!114 &2040656751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3439638690424822378, guid: 073ca55962d1720429662152eca2c2ab, type: 3}
+  m_PrefabInstance: {fileID: 7440871055663807517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6133b4a34ad4fa2bc6fb3d21ca0605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2083946194
 GameObject:
   m_ObjectHideFlags: 0

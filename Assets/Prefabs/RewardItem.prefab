@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4388921638314986289}
   - component: {fileID: 6612489956922551379}
   - component: {fileID: 3335296399781603953}
+  - component: {fileID: 7641420034358280961}
   m_Layer: 0
   m_Name: RewardItem
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   activateButton: {fileID: 4273454053116860970}
   editButton: {fileID: 8915211667293212437}
   coinCost: {fileID: 8808106557277030081}
+--- !u!114 &7641420034358280961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451946175099261037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eabc7d46ccfa4a5abf334ed6a2ad70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.2
+  shakeOffset: 30
 --- !u!1 &460698329600019165
 GameObject:
   m_ObjectHideFlags: 0
