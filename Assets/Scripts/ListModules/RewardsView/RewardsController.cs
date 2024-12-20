@@ -1,8 +1,10 @@
-using System.Diagnostics;
+using System;
+using UnityEngine;
 
 public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
+    public PopUpBanner popUpBanner; 
 
     protected override void Start()
     {
@@ -15,12 +17,13 @@ public class RewardsController : ListController<Reward, RewardData>
 
     public override void ActivateListItem(Reward reward)
     {
-        print(GameManager.Instance);
+        Debug.Log(GameManager.Instance);
         print(GameManager.Instance.coins);
-        Debug.Assert(GameManager.Instance != null, "GameManager is null");
+
         if (GameManager.Instance.coins >= reward.RewardCost)
         {
             CompleteListItem(reward);
+            popUpBanner.ShowBanner();
         }
         else
         {
