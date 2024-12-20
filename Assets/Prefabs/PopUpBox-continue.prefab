@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1386607428396429138}
   - component: {fileID: 4463002634817473933}
   m_Layer: 5
-  m_Name: PopUpBox-yes-no
+  m_Name: PopUpBox-continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
