@@ -4,7 +4,7 @@ using UnityEngine;
 public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
-    public PopUpBanner popUpBanner; 
+    public PopUpBox popUpBox; 
 
     protected override void Start()
     {
@@ -23,7 +23,7 @@ public class RewardsController : ListController<Reward, RewardData>
         if (GameManager.Instance.coins >= reward.RewardCost)
         {
             CompleteListItem(reward);
-            popUpBanner.ShowBanner();
+            popUpBox.ShowBanner();
         }
         else
         {
