@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xp: 0
-  coins: 50
+  coins: 500
 --- !u!1 &326611980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4236,7 +4236,6 @@ RectTransform:
   - {fileID: 1673744982}
   - {fileID: 851671862}
   - {fileID: 185256207}
-  - {fileID: 1621810371}
   m_Father: {fileID: 2037107877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4779,11 +4778,11 @@ PrefabInstance:
     - target: {fileID: 5056316655006763400, guid: ad4ec7e694764404dbef2fa263381ae4, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: cee0f384e1357e44ca697b994fbdd00d, type: 2}
     - target: {fileID: 5056316655006763400, guid: ad4ec7e694764404dbef2fa263381ae4, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 4100293552657715086, guid: cee0f384e1357e44ca697b994fbdd00d, type: 2}
     - target: {fileID: 5056316655006763400, guid: ad4ec7e694764404dbef2fa263381ae4, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -4956,7 +4955,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Congratulations!
 
-    You unlock a reward!'
+    You unlocked a reward!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5135,7 +5134,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621810370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5143,7 +5142,7 @@ RectTransform:
   - {fileID: 577045076}
   - {fileID: 1521955050}
   - {fileID: 82119569}
-  m_Father: {fileID: 1358396587}
+  m_Father: {fileID: 1673744982}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5165,7 +5164,7 @@ MonoBehaviour:
   popUpPanel: {fileID: 1621810371}
   closeButton: {fileID: 82119570}
   congratMessage: {fileID: 1521955051}
-  animationDuration: 0.5
+  animationDuration: 0.1
   targetScreenPercentage: 0.25
 --- !u!222 &1621810374
 CanvasRenderer:
@@ -5436,6 +5435,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1621810371}
   - {fileID: 1980686882}
   m_Father: {fileID: 1358396587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
