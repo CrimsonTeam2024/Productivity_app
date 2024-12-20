@@ -3879,11 +3879,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 147079968319393337, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 202
+      value: 462
       objectReference: {fileID: 0}
     - target: {fileID: 147079968319393337, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 415
+      value: 464
       objectReference: {fileID: 0}
     - target: {fileID: 1452121397776358778, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_Pivot.x
@@ -3959,11 +3959,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1452121397776358778, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1452121397776358778, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 107
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1452121397776358778, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4063,6 +4063,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1452121397776358778, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
   m_PrefabInstance: {fileID: 960147687}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &960147689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3439638690424822378, guid: beed1d720da4f4542bdfd12e7a167c0c, type: 3}
+  m_PrefabInstance: {fileID: 960147687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6133b4a34ad4fa2bc6fb3d21ca0605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &985723828
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +6079,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1535887614}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 960147689}
+        m_TargetAssemblyTypeName: PopUpBox, Assembly-CSharp
+        m_MethodName: ShowBanner
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1535887614
 MonoBehaviour:
   m_ObjectHideFlags: 0
