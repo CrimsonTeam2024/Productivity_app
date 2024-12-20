@@ -10,6 +10,7 @@ public class FocusUIController : MonoBehaviour
     //       than defining it in the Unity inspector
     [SerializeField] TMP_Text focusTimerText;
     [SerializeField] GameObject hammerIcon;
+    [SerializeField] GameObject endPopup;
     [SerializeField] Image focusRingToFill;
     GameObject focusViewObject;
     Timer _timer;
@@ -83,8 +84,11 @@ public class FocusUIController : MonoBehaviour
         // hide the timer
         if (focusViewObject != null)
         {
-            focusViewObject.SetActive(false);
             isTimerShown = false;
+            focusTimerText.gameObject.SetActive(false);
+            endPopup.SetActive(true);
+            YesNoPopUpBox popopDynamics = endPopup.GetComponent<YesNoPopUpBox>();
+            popopDynamics.ShowBanner();
         }
     }
 }
