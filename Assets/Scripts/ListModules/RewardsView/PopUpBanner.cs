@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PopUpBanner : MonoBehaviour
+public class PopUpBox : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private RectTransform popUpPanel;
