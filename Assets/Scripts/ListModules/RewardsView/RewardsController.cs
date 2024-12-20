@@ -5,6 +5,7 @@ public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
     public PopUpBox popUpBox; 
+    public ShakeEffect shakeEffect;
 
     protected override void Start()
     {
@@ -28,9 +29,10 @@ public class RewardsController : ListController<Reward, RewardData>
         else
         {
             // Prompt user to earn more coins
-            /*
-            uiController.ShowNotification("Insufficient coins", "You need more coins to unlock this reward.");
-            */
+            ShakeEffect shakeEffect = reward.GetComponent<ShakeEffect>();
+            if (shakeEffect != null) {
+                shakeEffect.TriggerShake();
+            }
         }
     }
 
