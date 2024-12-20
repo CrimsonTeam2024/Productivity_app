@@ -882,7 +882,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1269135879}
         m_TargetAssemblyTypeName: NavBar, Assembly-CSharp
-        m_MethodName: SetCurrentViewIndex
+        m_MethodName: TransitionToIndex
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3539,7 +3539,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1269135879}
         m_TargetAssemblyTypeName: NavBar, Assembly-CSharp
-        m_MethodName: SetCurrentViewIndex
+        m_MethodName: TransitionToIndex
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5138,8 +5138,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337f529598146834f9f59c2fd54e7e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewsParent: {fileID: 2037107876}
+  viewsParent: {fileID: 2037107877}
   currentViewIndex: 0
+  transitionDuration: 0.5
+  transitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enableCircularNavigation: 0
 --- !u!1 &1294667913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,7 +7381,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1269135879}
         m_TargetAssemblyTypeName: NavBar, Assembly-CSharp
-        m_MethodName: SetCurrentViewIndex
+        m_MethodName: TransitionToIndex
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8300,7 +8326,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1269135879}
         m_TargetAssemblyTypeName: NavBar, Assembly-CSharp
-        m_MethodName: SetCurrentViewIndex
+        m_MethodName: TransitionToIndex
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
