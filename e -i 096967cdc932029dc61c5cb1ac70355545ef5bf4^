@@ -1,0 +1,253 @@
+[33mcommit 096967cdc932029dc61c5cb1ac70355545ef5bf4[m[33m ([m[1;36mHEAD -> [m[1;32mtest/village-JA[m[33m, [m[1;31morigin/test/village-JA[m[33m)[m
+Author: Abe <>
+Date:   Fri Dec 20 13:02:51 2024 +0000
+
+    fake af
+
+[33mcommit 2d8b876730dc2bbe8827f28109b7928db00e23e0[m[33m ([m[1;31morigin/prototype/village-3-JA[m[33m, [m[1;32mprototype/village-3-JA[m[33m)[m
+Author: Abe <>
+Date:   Tue Dec 10 11:56:19 2024 +0000
+
+    improvements to building placement
+
+[33mcommit e817be7434688b97872f34d575e6dd4c9c12468a[m
+Author: Abe <>
+Date:   Tue Dec 3 12:23:33 2024 +0000
+
+    Working Collisions, backend interactivity with world objects
+
+[33mcommit 3a3aa9f6dbd9eb2f40b427a973f0e9fb695cbf4d[m
+Author: Abe <>
+Date:   Tue Dec 3 00:42:51 2024 +0000
+
+    Scrolling world view and backend
+
+[33mcommit 8f1362f5aa46e6a222711041b0f9c43cbaa4df87[m
+Author: Hai Bo <harrisbo@qq.com>
+Date:   Fri Nov 29 03:26:35 2024 +0000
+
+    Game manager/hb1 (#9)
+
+[33mcommit a441d971a3223f56b598025f45356bbba133140c[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 26 18:52:57 2024 +0000
+
+    Fixed bug where list item positions were being udpated when list was empty.
+
+[33mcommit e0fe745406cbb1d563209825d765a3c9303d7b96[m
+Author: RobertRuta <77187208+RobertRuta@users.noreply.github.com>
+Date:   Tue Nov 26 18:48:30 2024 +0000
+
+    List item deletion and list item shift animation. Refactored Tasks and Rewards. (#8)
+    
+    * Code formatting cleanup.
+    
+    * Created a class for handling the new list item panel's ui. Attached it to the new list item panel gameobject.
+    
+    * Moved focus module out of the ListViews game object child hierarchy.
+    
+    * Added scroll view and tier selector to list item inputs.
+    
+    * Deleted list item data classes and moved the data objects into the Task, Reward, and ListItem classes.
+    
+    * Refined the new list item creation code and added a shift between the task objects so there is separation between the task instanstances.
+    
+    * Added a todo for converting new task inputs into an actual new task.
+    
+    * Some Adaptive Performance folder poppped up. I think Unity auto generated in response to some patch maybe?
+    
+    * Scene update.
+    
+    * Handled list item deletion correctly.
+    
+    * Fixed Delete Handler being triggered across every instance of listController. Created separate events for task and reward deletion. Added an interpolated position update to ListItems.
+    
+    * Some cleanup.
+
+[33mcommit 0bcae742c3ddb24390593f7b9198cb9ed78482ed[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Wed Nov 20 16:58:09 2024 +0000
+
+    Added some comments to clarify certain implementations. Added some TODOs, and clarified others.
+
+[33mcommit a942fbff36da428057d692d80d03e5d22a725975[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 17:02:05 2024 +0000
+
+    Added a fake task for focus demonstration.
+
+[33mcommit f6e6d6cb8b48f0b9306eaab8f410eb533bb519e8[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 16:59:18 2024 +0000
+
+    Cleanup.
+
+[33mcommit b6395e68300ab1adea824729f42ca7e60ff7c7a3[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 16:55:55 2024 +0000
+
+    Forced commit.
+
+[33mcommit 8ef5f0286ce6c95a3c063bc2a006bc0874df4a6e[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 16:55:37 2024 +0000
+
+    Scene update.
+
+[33mcommit b6c25926cc2ff8deee3060b9b2df3218d683d9dc[m
+Author: RobertRuta <77187208+RobertRuta@users.noreply.github.com>
+Date:   Tue Nov 19 16:50:23 2024 +0000
+
+    New Task Creation (#5)
+    
+    Don't understand where the merge conflicts came from tbh, but all is working now.
+    
+    * Added functionality for converting UI input field text values into Task and Reward object.
+    
+    * Centralized module designs, making sure that the primary controller is the only interface with other systems and modules. Also added task creating function which involved a refactor of the ListItem classes. Specifcally I had to make them non-unity classes by getting rid of their MonoBehaviour inheritance, so that I could create TaskData objects using a constructor.
+    
+    * Added an add task button for demonstration purposes.
+    
+    * Moved Cancel New Task Creation control to the ListController rather than the ListUIController.
+    
+    * Created prototype task prefab.
+    
+    * Added functionality for creating task game objects.
+
+[33mcommit 9bc3a1bbf98f3d177f6e97ad882ebadffa61393f[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 12:22:15 2024 +0000
+
+    Clarified method names.
+
+[33mcommit 19bca3db3e66f722cb6dd1fca7456ba427b3b864[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 11:51:04 2024 +0000
+
+    Corrected TODO comment formatting.
+
+[33mcommit 7d252de00d7088adac4bb354a71fdc7400cd8197[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Tue Nov 19 11:35:04 2024 +0000
+
+    Moved away from the prefab instantiation approach to the instantiated GameObject approach.
+
+[33mcommit f41c1ae52f93f8ceea1fff9a2e57aa2be4521d00[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Mon Nov 18 18:09:37 2024 +0000
+
+    Minor changes to the scene.
+
+[33mcommit 668600a599a29fae734173b7d435463832d6e869[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Mon Nov 18 18:08:45 2024 +0000
+
+    Added some provisional currency and xp producing code to the Task Complete List Item function.
+
+[33mcommit 30e02a47248805358a7d534d72402c4e53330731[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Mon Nov 18 18:06:23 2024 +0000
+
+    Created GameManager script. Nothing inside yet.
+
+[33mcommit 72563e8124786180252b456014904ea60c2b7935[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Mon Nov 18 12:35:30 2024 +0000
+
+    Working on the unity scene hierarchy prototype.
+
+[33mcommit 33fa4c090d4dd1a3f4d053f28e0946c8403a83b8[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Mon Nov 18 12:34:31 2024 +0000
+
+    Included some logic for Creating a New List Item Panel.
+
+[33mcommit 1a1c2101c94534dd15a3726375da77cff247c6e8[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sun Nov 17 14:38:16 2024 +0000
+
+    DeslectListItem now correctly sets selectedListItem to null.
+
+[33mcommit bd6212bc6d565b011db5ededcfea12604551b10b[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sun Nov 17 14:12:50 2024 +0000
+
+    Renamed the List controllers so that it is more clear that there is 1 controller per list rather than per list item.
+
+[33mcommit 16b9e203164818349fafd86e664042b00874f26c[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sun Nov 17 13:58:15 2024 +0000
+
+    Created a separate UI controller for each component.
+
+[33mcommit bc54f13a74347f93614e4ad5cf1b61393fb1cb17[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sat Nov 16 10:06:37 2024 +0000
+
+    Setup a Unity Scene prototype.
+
+[33mcommit 7f016c73690b92f0b759155b3589b295648e1654[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sat Nov 16 10:03:53 2024 +0000
+
+    Prototyped the Focus UI Controller.
+
+[33mcommit 9560efa3caa90fe37dfa09327b49717a9b605862[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sat Nov 16 10:01:52 2024 +0000
+
+    Added a Focus Controller class that communicates between all the different components of the app, controls the focus timer itself and triggers the appropriate UI.
+
+[33mcommit a2607bab960275121ebcf53892ee4e1f4d7eb3ff[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sat Nov 16 09:59:54 2024 +0000
+
+    Replaced FocusSession class with Timer class, in preparation for moving all Focus controls to FocusController class.
+
+[33mcommit 1fde9b739c2bfd4aa2f84042c08fa094227d7e0c[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Sat Nov 16 09:57:53 2024 +0000
+
+    Added SerializeField attribute to time cost variable so that it is editable in the Unity editor (debug purposes).
+
+[33mcommit faca76d102f2972f7d9a3451f1f44b01ea5a15e8[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 20:20:40 2024 +0000
+
+    Reformatted rewards and tasks to use properties as well as fields. Fields can be useful for revealing values in the inspector, whilst properties allow for getter and setter logic to be defined directly at variable declaration.
+
+[33mcommit 4e511822d8e346c1d96ba6d91658f5e6e4b01541[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 14:59:15 2024 +0000
+
+    Added TextMeshPro package to Unity project. It is a UI asset library.
+
+[33mcommit 5089689874166170f605dc7f1fc4f4ea88476df4[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 14:39:29 2024 +0000
+
+    cleanup.
+
+[33mcommit 6d2fb84f22fb5298f488b8bede6794f3ab4c1eb5[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 14:38:38 2024 +0000
+
+    Created an initial prototype for the focus session. Split the logic into a focus session that handles the focus time data, and focus ui controller that manipulates the UI.
+
+[33mcommit 309aeff63a6a81abd8b7340791eaec62ee9451b7[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 14:05:14 2024 +0000
+
+    Modified folder structure and names.
+
+[33mcommit 28778fd146942c6c0f4001c0568edfb4e765a8de[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Fri Nov 15 12:21:26 2024 +0000
+
+    Created an initial prototype for our List Views, which include the Task List and the Reward List.
+
+[33mcommit 4fb00d43ea0a30d3aab6cf4bbf6332828b0a3395[m
+Author: Robert Ruta <robertruta50@gmail.com>
+Date:   Thu Nov 14 16:10:52 2024 +0000
+
+    Init commit.
