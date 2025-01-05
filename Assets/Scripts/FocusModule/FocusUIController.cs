@@ -12,6 +12,8 @@ public class FocusUIController : MonoBehaviour
     [SerializeField] GameObject hammerIcon;
     [SerializeField] GameObject endPopup;
     [SerializeField] Image focusRingToFill;
+    [SerializeField] TMP_Text taskTitle;
+    [SerializeField] TMP_Text taskDescription;
     GameObject focusViewObject;
     Timer _timer;
     bool isTimerShown;
@@ -25,7 +27,7 @@ public class FocusUIController : MonoBehaviour
     }
 
     
-    public void FakeShowFocusTimer(Timer time)
+    public void ShowFocusTimer(Timer time)
     {
         _timer = time;
         if (focusViewObject != null)
@@ -38,26 +40,14 @@ public class FocusUIController : MonoBehaviour
         }
     }
 
-    
-    public void ShowFocusTimer(Timer time)
+
+    public void UpdateFocusViewData(Task task)
     {
-        _timer = time;
-        if (focusViewObject != null)
-        {
-            focusViewObject.SetActive(true);
-            isTimerShown = true;
-            focusTimerText.text = _timer.ToString();
-            // _timer.OnTimerTick += UpdateTimer; // subscribe to the event to update the text
-        }
+        taskTitle.text = task.ItemName;
+        taskDescription.text = task.ItemDescription;
     }
 
 
-    // TODO: Consider a better way of doing this.
-    //       Maybe we can create tick events, 
-    //       rather than updating this logic once every frame
-    //       even though we know we will need to update this string 
-    //       only once every second. The Update method executes every frame, 
-    //       so potentially hundreds of times a second. This is inefficient.
     void Update()
     {
         if (_timer != null)
