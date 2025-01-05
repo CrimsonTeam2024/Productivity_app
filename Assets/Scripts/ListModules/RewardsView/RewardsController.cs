@@ -51,7 +51,7 @@ public class RewardsController : ListController<Reward, RewardData>
     public override void CompleteListItem(Reward reward)
     {
         // Deduct coins
-        GameManager.Instance.coins -= reward.RewardCost;
+        GameManager.Instance.UpdateStats(reward);
 
         // Animate celebration for completing reward
 

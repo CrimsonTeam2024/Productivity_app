@@ -6,6 +6,13 @@ public class FocusController : MonoBehaviour
     public Timer focusTime;
     [SerializeField] FocusUIController focusUIController;
     [SerializeField] TasksController tasksController;
+    GameManager gameManager;
+
+
+    void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
 
 
     public void ShowFocusView()
@@ -42,6 +49,8 @@ public class FocusController : MonoBehaviour
         focusTime.OnTimerEnd -= EndFocusTimer;
 
         completedTask.TriggerOnDelete();
+
+        gameManager.UpdateStats(completedTask);
 
         // TODO: Hande updates to Village System
 
