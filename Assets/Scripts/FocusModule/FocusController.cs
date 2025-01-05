@@ -17,9 +17,9 @@ public class FocusController : MonoBehaviour
     public void InitFocusSession(Task taskToActivate) // TODO: Connect ListController to this
     {
         ShowFocusView();
+        focusUIController.UpdateFocusViewData(taskToActivate);
         focusedTask = taskToActivate;
     }
-
 
     public void StartFocusTimer() // TODO: Connect ListController to this
     {
@@ -27,13 +27,13 @@ public class FocusController : MonoBehaviour
         focusTime = new Timer(activatedTask.TimeCost);
         focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
         
-        focusUIController.FakeShowFocusTimer(focusTime);
+        focusUIController.ShowFocusTimer(focusTime);
         
         StartCoroutine(focusTime.StartClock(activatedTask));
 
         // TODO: Handle updates to Village System
     }
-    
+
 
     public void EndFocusTimer(Task completedTask)
     {
