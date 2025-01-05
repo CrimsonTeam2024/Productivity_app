@@ -54,9 +54,7 @@ public class FocusController : MonoBehaviour
         completedTask.TriggerOnDelete();
 
         gameManager.UpdateStats(completedTask);
-
         // TODO: Hande updates to Village System
-
     }
 
 
