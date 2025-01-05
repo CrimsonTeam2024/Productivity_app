@@ -3371,7 +3371,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 69782828}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3697,7 +3697,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 326611981}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4158,6 +4158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragThreshold: 10
+  inertiaDuration: 5
+  inertiaDampingFactor: 0.2
 --- !u!114 &807681362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5652101964470512375, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
