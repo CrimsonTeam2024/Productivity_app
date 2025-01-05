@@ -3371,7 +3371,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 69782828}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3697,7 +3697,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 326611981}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4158,6 +4158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragThreshold: 10
+  inertiaDuration: 5
+  inertiaDampingFactor: 0.3
+  dragSpeed: 40
 --- !u!114 &807681362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5652101964470512375, guid: b78cdfe7d62ac264592b8b9be11c2235, type: 3}
@@ -7539,6 +7542,7 @@ GameObject:
   - component: {fileID: 1478096735}
   - component: {fileID: 1478096734}
   - component: {fileID: 1478096736}
+  - component: {fileID: 1478096737}
   m_Layer: 5
   m_Name: BuildingSelectPanel
   m_TagString: Untagged
@@ -7625,6 +7629,20 @@ MonoBehaviour:
   costB: 220
   buildingPrefabC: {fileID: 4347590545502292030, guid: bbb7bb3d2aaa2ac47a02afaab40002a1, type: 3}
   costC: 350
+--- !u!114 &1478096737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478096732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f060e2765be21e4b8fae3fcbac2e8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationDuration: 0.1
+  isAnimating: 0
 --- !u!1 &1479621340
 GameObject:
   m_ObjectHideFlags: 0
