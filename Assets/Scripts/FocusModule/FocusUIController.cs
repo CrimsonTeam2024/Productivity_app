@@ -10,7 +10,10 @@ public class FocusUIController : MonoBehaviour
     //       than defining it in the Unity inspector
     [SerializeField] TMP_Text focusTimerText;
     [SerializeField] GameObject hammerIcon;
-    [SerializeField] GameObject endPopup;
+    [SerializeField] GameObject onwardPopup;
+    [SerializeField] GameObject cancelPopup;
+    [SerializeField] GameObject backButton;
+    [SerializeField] GameObject stopButton;
     [SerializeField] Image focusRingToFill;
     [SerializeField] TMP_Text taskTitle;
     [SerializeField] TMP_Text taskDescription;
@@ -76,9 +79,27 @@ public class FocusUIController : MonoBehaviour
         {
             isTimerShown = false;
             focusTimerText.gameObject.SetActive(false);
-            endPopup.SetActive(true);
-            YesNoPopUpBox popopDynamics = endPopup.GetComponent<YesNoPopUpBox>();
+            onwardPopup.SetActive(true);
+            YesNoPopUpBox popopDynamics = onwardPopup.GetComponent<YesNoPopUpBox>();
             popopDynamics.ShowBanner();
+            stopButton.SetActive(false);
+            backButton.SetActive(false);
+            cancelPopup.SetActive(false);
         }
+    }
+
+
+    public void ResetFocusUI()
+    {
+        focusTimerText.text = "00:00:00";
+        hammerIcon.SetActive(true);
+        onwardPopup.SetActive(false);
+        cancelPopup.SetActive(false);
+        backButton.SetActive(true);
+        stopButton.SetActive(false);
+        focusTimerText.gameObject.SetActive(false);
+        timeFromStart = 0;
+        focusRingToFill.fillAmount = 0;
+        _timer = null;
     }
 }

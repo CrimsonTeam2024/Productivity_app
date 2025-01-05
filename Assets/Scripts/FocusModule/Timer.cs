@@ -93,7 +93,7 @@ public class Timer
 
     
     // This is what we call a "Coroutine", as indicated by the "yield return"
-    public IEnumerator StartClock(Task activatedTask)
+    public IEnumerator TimerTickDown(Task activatedTask)
     {
         _secondsRemaining = _totalSeconds;
         isTimerTicking = true;
@@ -119,5 +119,13 @@ public class Timer
         
         // a Task object to be passed to the event 
         OnTimerEnd?.Invoke(activatedTask);
+    }
+
+    
+    // This is what we call a "Coroutine", as indicated by the "yield return"
+    public void ResetClock()
+    {
+        isTimerTicking = false;
+        _secondsRemaining = _totalSeconds;
     }
 }
