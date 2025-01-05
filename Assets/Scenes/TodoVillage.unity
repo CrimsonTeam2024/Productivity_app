@@ -2726,7 +2726,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 69782828}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3050,7 +3050,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 326611981}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4621,7 +4621,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1294667915}
         m_TargetAssemblyTypeName: FocusController, Assembly-CSharp
-        m_MethodName: FakeStartFocusTimer
+        m_MethodName: StartFocusTimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5479,6 +5479,8 @@ MonoBehaviour:
   hammerIcon: {fileID: 13873576}
   endPopup: {fileID: 1858147930}
   focusRingToFill: {fileID: 374127101}
+  taskTitle: {fileID: 2028809659}
+  taskDescription: {fileID: 1354760602}
 --- !u!1 &1307096366
 GameObject:
   m_ObjectHideFlags: 0
