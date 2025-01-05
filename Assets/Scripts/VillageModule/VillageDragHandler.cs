@@ -16,6 +16,7 @@ public class VillageDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
     [Range (0, 1)] 
     public float inertiaDampingFactor = 0.5f;
     private bool isDragging;
+    public float dragSpeed = 0.01f;
 
     void Awake()
     {
@@ -53,7 +54,7 @@ public class VillageDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
             lastDragPosition = eventData.position;
 
             // Shifts anchor position of that transform
-            rectTransform.anchoredPosition += delta;
+            rectTransform.anchoredPosition += delta * Time.deltaTime * dragSpeed;
         }
     }
 
@@ -73,7 +74,7 @@ public class VillageDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         while (elapsedTime < inertiaDuration)
         {
-            rectTransform.anchoredPosition += currentDelta;
+            rectTransform.anchoredPosition += currentDelta * Time.deltaTime * dragSpeed;
             currentDelta = Vector2.Lerp(currentDelta, Vector2.zero, inertiaDampingFactor);
             elapsedTime += Time.deltaTime;
             yield return null;
