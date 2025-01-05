@@ -14,26 +14,16 @@ public class FocusController : MonoBehaviour
     }
 
 
-    public void InitFocusSession() // TODO: Connect ListController to this
+    public void InitFocusSession(Task taskToActivate) // TODO: Connect ListController to this
     {
         ShowFocusView();
-        // Task activatedTask = tasksController.list[0];
-        // if (activatedTask != null)
-        // {
-        //     focusTime = new Timer(activatedTask.TimeCost);
-        //     focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
-            
-            // focusUIController.ShowFocusTimer(focusTime);
-            
-            // StartCoroutine(focusTime.StartClock(activatedTask));
-        // }
-        // TODO: Handle updates to Village System
+        focusedTask = taskToActivate;
     }
 
 
     public void StartFocusTimer() // TODO: Connect ListController to this
     {
-        Task activatedTask = tasksController.list[0];
+        Task activatedTask = focusedTask;
         focusTime = new Timer(activatedTask.TimeCost);
         focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
         
@@ -43,19 +33,7 @@ public class FocusController : MonoBehaviour
 
         // TODO: Handle updates to Village System
     }
-
-
-    public void StartFocusTimer(Task activatedTask) // TODO: Connect ListController to this
-    {
-        focusTime = new Timer(activatedTask.TimeCost);
-        focusTime.OnTimerEnd += EndFocusTimer; // Subscribes the EndFocusTimer method to the OnTimerEnd Event
-        
-        focusUIController.ShowFocusTimer(focusTime);
-        
-        StartCoroutine(focusTime.StartClock(activatedTask));
-
-        // TODO: Handle updates to Village System
-    }
+    
 
     public void EndFocusTimer(Task completedTask)
     {
