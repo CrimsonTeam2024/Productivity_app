@@ -81,4 +81,15 @@ public class FocusUIController : MonoBehaviour
             popopDynamics.ShowBanner();
         }
     }
+
+
+    public void ResetFocusUI()
+    {
+        focusTimerText.text = "00:00:00";
+        focusTimerText.gameObject.SetActive(false);
+        hammerIcon.SetActive(true);
+        endPopup.SetActive(false);
+        timeFromStart = 0;
+        focusRingToFill.fillAmount = 0;
+    }
 }
