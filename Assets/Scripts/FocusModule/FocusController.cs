@@ -31,7 +31,7 @@ public class FocusController : MonoBehaviour
     }
 
 
-    public void FakeStartFocusTimer() // TODO: Connect ListController to this
+    public void StartFocusTimer() // TODO: Connect ListController to this
     {
         Task activatedTask = tasksController.list[0];
         focusTime = new Timer(activatedTask.TimeCost);
