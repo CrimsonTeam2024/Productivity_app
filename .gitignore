@@ -32,4 +32,5 @@ UserSettings/
 # Other Unity-specific files
 *.unitypackage
 *.asset
-Search.settings
+
+.vsconfig
