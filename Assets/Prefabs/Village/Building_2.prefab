@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8539181883020170959}
   - component: {fileID: 643665460968433736}
   - component: {fileID: 8029542877949190584}
+  - component: {fileID: 3452335431109483145}
   m_Layer: 8
   m_Name: Building_2
   m_TagString: Untagged
@@ -75,3 +76,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3452335431109483145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347590545502292030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5619392747792f4e8d96cc973854f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 220
+  currentHealth: 220
