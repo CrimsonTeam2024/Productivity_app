@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 643665460968433736}
   - component: {fileID: 8029542877949190584}
   m_Layer: 8
-  m_Name: Building
+  m_Name: Building_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1181680b854ee624d910ee02426ddc77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 595a47e9679e6d7488acbffb3b9155cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

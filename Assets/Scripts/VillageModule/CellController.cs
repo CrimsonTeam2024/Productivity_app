@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class CellController : MonoBehaviour, IPointerClickHandler
 {
     public bool isOccupied = false;
-    public GameObject buildingPrefab; // UI object
+    public GameObject buildingPrefab;
 
     public int gridX;
     public int gridY;
@@ -28,21 +28,26 @@ public class CellController : MonoBehaviour, IPointerClickHandler
             return;
         }
 
+        // \/ This \/ now bypassed by BuildingSelectionPanel,
+        // which will then handle actual building:
+
         // Attempt ro spend coins / build, if adjacent check is true
-        if (!GameManager.Instance.SpendCoins(100))
-        {
-            Debug.Log(" - Not enough coins");
-            return;
-        }
+        //if (!GameManager.Instance.SpendCoins(100))
+        //{
+        //    Debug.Log(" - Not enough coins");
+        //    return;
+        //}
 
-        // Checks good - place the building
-        isOccupied = true;
-        GameObject building = Instantiate(buildingPrefab, transform);
-        var buildingRect = building.GetComponent<RectTransform>();
-        if (buildingRect != null)
-            buildingRect.anchoredPosition = Vector2.zero;
+        //// Checks good - place the building
+        //isOccupied = true;
+        //GameObject building = Instantiate(buildingPrefab, transform);
+        //var buildingRect = building.GetComponent<RectTransform>();
+        //if (buildingRect != null)
+        //    buildingRect.anchoredPosition = Vector2.zero;
 
-        Debug.Log(" - Building placed");
+        //Debug.Log(" - Building placed");
+
+        BuildingSelectionPanel.Instance.ShowForCell(this);
     }
 
     private VillageGridManager VillageGridManagerRef()
