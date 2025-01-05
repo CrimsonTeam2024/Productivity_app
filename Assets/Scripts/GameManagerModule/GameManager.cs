@@ -123,4 +123,91 @@ public class GameManager : MonoBehaviour
         UpdateCoinDisplay(); // Update coin count as displayed in UI
     }
 
+
+    void UpdateXP(double amount)
+    {
+        xp += amount;
+    }
+
+
+    void UpdateCoins(int amount)
+    {
+        coins += (uint)amount;
+        UpdateCoinDisplay();
+    }
+
+
+    public void UpdateStats(Task completedTask)
+    {
+        // Update XP
+        double xpChange = CalculateXpChange(completedTask);
+        UpdateXP(xpChange);
+
+        // Update coins
+        int coinChange = CalculateCoinChangeOnTaskCompletion(completedTask);
+        UpdateCoins(coinChange);
+    }
+
+
+    public void UpdateStats(Reward completedReward)
+    {
+        // Update XP
+        double xpChange = CalculateXpChange(completedReward);
+        UpdateXP(xpChange);
+
+        // Update coins
+        int coinChange = -(int)completedReward.RewardCost;
+        UpdateCoins(coinChange);
+    }
+
+
+    double CalculateXpChange(Task completedTask)
+    {
+        TaskTier taskTier = completedTask.TaskTier;
+        switch (taskTier)
+        {
+            case TaskTier.Easy:
+                return 10;
+            case TaskTier.Medium:
+                return 20;
+            case TaskTier.Hard:
+                return 50;
+            default: 
+                return 0;
+        }
+    }
+
+
+    double CalculateXpChange(Reward completedReward)
+    {
+        RewardTier rewardTier = completedReward.RewardTier;
+        switch (rewardTier)
+        {
+            case RewardTier.Small:
+                return 0;
+            case RewardTier.Medium:
+                return 0;
+            case RewardTier.Big:
+                return 0;
+            default: 
+                return 0;
+        }
+    }
+
+
+    int CalculateCoinChangeOnTaskCompletion(Task completedTask)
+    {
+        TaskTier taskTier = completedTask.TaskTier;
+        switch (taskTier)
+        {
+            case TaskTier.Easy:
+                return 5;
+            case TaskTier.Medium:
+                return 10;
+            case TaskTier.Hard:
+                return 20;
+            default:
+                return 0;
+        }
+    }
 }
