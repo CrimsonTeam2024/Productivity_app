@@ -25,6 +25,7 @@ public class BuildingSelectionPanel : MonoBehaviour
     {
         currentCell = cell;
         gameObject.SetActive(true);
+        StartCoroutine(gameObject.GetComponent<InflateAnimationUtility>().Animate(true));   
     }
 
     public void OnClickBuildA()
@@ -75,6 +76,6 @@ public class BuildingSelectionPanel : MonoBehaviour
 
     public void OnClickCancel()
     {
-        gameObject.SetActive(false);
+        StartCoroutine(gameObject.GetComponent<InflateAnimationUtility>().Animate(false));   
     }
 }
