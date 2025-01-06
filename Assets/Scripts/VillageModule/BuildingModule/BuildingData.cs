@@ -12,6 +12,7 @@ public class BuildingStats : MonoBehaviour
     {
         currentHealth = maxHealth;
         villageController = FindFirstObjectByType<VillageController>();
+        villageController.buildingCounter++;
     }
 
     void Update()
@@ -24,5 +25,7 @@ public class BuildingStats : MonoBehaviour
         }
 
         currentHealthDisplay = (int)currentHealth;
+
+        villageController.totalVillageHealth += currentHealth;
     }
 }
