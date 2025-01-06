@@ -4432,19 +4432,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 883009825}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037225133}
-        m_TargetAssemblyTypeName: PopUpMessage, Assembly-CSharp
-        m_MethodName: ShowPopup
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Plan wisely, and you shall conquer time
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &883009825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6192,19 +6180,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1196264629}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037225133}
-        m_TargetAssemblyTypeName: PopUpMessage, Assembly-CSharp
-        m_MethodName: ShowPopup
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Time is your most valuable resource. Use it wisely
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1196264629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,19 +8635,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1566844788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037225133}
-        m_TargetAssemblyTypeName: PopUpMessage, Assembly-CSharp
-        m_MethodName: ShowPopup
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: In productivity lies the strength to overcome any obstacle
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1566844788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9687,6 +9651,11 @@ MonoBehaviour:
   tasksCompletedText: {fileID: 2008528581}
   focusTimeText: {fileID: 1933182662}
   oracleSatisfactionText: {fileID: 1807414412}
+  oracleMessageButtons:
+  - {fileID: 883009824}
+  - {fileID: 1196264628}
+  - {fileID: 1566844787}
+  - {fileID: 2037225130}
 --- !u!1 &1733570651
 GameObject:
   m_ObjectHideFlags: 0
@@ -12017,19 +11986,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037225131}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2037225133}
-        m_TargetAssemblyTypeName: PopUpMessage, Assembly-CSharp
-        m_MethodName: ShowPopup
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Beware, your time management needs focus
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2037225131
 MonoBehaviour:
   m_ObjectHideFlags: 0
