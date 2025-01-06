@@ -1,33 +1,38 @@
-using System.Diagnostics;
+using System;
+using UnityEngine;
 
 public class RewardsController : ListController<Reward, RewardData>
 {
     RewardsUIController rewardsUIController;
+    public PopUpBox popUpBox; 
+    public ShakeEffect shakeEffect;
 
-    void Awake()
+    protected override void Start()
     {
-        // Reward.OnDeleteReward += HandleDeleteItemFromList;
-        // Reward.OnActivateReward += ActivateListItem;
-        // Reward.OnEditReward += EditListItem;
-        // Reward.OnInitEditReward += ShowEditListItemPanel;
+        base.Start();
+        newListItemUIController = uiController.newListItemPanel.GetComponent<NewRewardUIController>();
+        editController = uiController.editListItemPanel.GetComponent<EditRewardUIController>();
+        uiController.newListItemUIController = newListItemUIController;
+        uiController.editController = editController;
     }
-    
 
     public override void ActivateListItem(Reward reward)
     {
-        print(GameManager.Instance);
+        Debug.Log(GameManager.Instance);
         print(GameManager.Instance.coins);
-        Debug.Assert(GameManager.Instance != null, "GameManager is null");
+
         if (GameManager.Instance.coins >= reward.RewardCost)
         {
             CompleteListItem(reward);
+            popUpBox.ShowBanner();
         }
         else
         {
             // Prompt user to earn more coins
-            /*
-            uiController.ShowNotification("Insufficient coins", "You need more coins to unlock this reward.");
-            */
+            ShakeEffect shakeEffect = reward.GetComponent<ShakeEffect>();
+            if (shakeEffect != null) {
+                shakeEffect.TriggerShake();
+            }
         }
     }
 
@@ -46,7 +51,7 @@ public class RewardsController : ListController<Reward, RewardData>
     public override void CompleteListItem(Reward reward)
     {
         // Deduct coins
-        GameManager.Instance.coins -= reward.RewardCost;
+        GameManager.Instance.UpdateStats(reward);
 
         // Animate celebration for completing reward
 

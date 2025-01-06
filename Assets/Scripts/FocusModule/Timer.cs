@@ -5,7 +5,7 @@ using UnityEngine;
 public class Timer
 {
     public event Action<Task> OnTimerEnd; // Event to propagate when timer ends#
-    public event Action<string> OnTimerTick; // event to update the timer
+    public event Action<Timer> OnTimerTick; // event to update the timer
 
 
     uint _totalSeconds;
@@ -77,15 +77,30 @@ public class Timer
         }
     }
 
+    public float TimerCompletion 
+    {
+        get {
+            return 1 - _secondsRemaining / (float)_totalSeconds;
+        }
+    }
+
+    public float TotalSeconds { get { return _totalSeconds; } }
 
     public override string ToString()
     {
         return Hours.ToString() + " : " + Minutes.ToString() + " : " + Seconds.ToString();
     }
 
+    public string ToString(bool isPretty)
+    {
+        if (!isPretty)
+            return ToString();
+        return Hours.ToString() + "hrs " + Minutes.ToString() + "mins " + Seconds.ToString() + "secs";
+    }
+
     
     // This is what we call a "Coroutine", as indicated by the "yield return"
-    public IEnumerator StartClock(Task activatedTask)
+    public IEnumerator TimerTickDown(Task activatedTask)
     {
         _secondsRemaining = _totalSeconds;
         isTimerTicking = true;
@@ -103,7 +118,7 @@ public class Timer
             Debug.Log(ToString()); // Optional: Log the current time
 
             // Triggers the event with the updated format
-            OnTimerTick?.Invoke(ToString());
+            OnTimerTick?.Invoke(this);
         }
 
         isTimerTicking = false;
@@ -111,5 +126,13 @@ public class Timer
         
         // a Task object to be passed to the event 
         OnTimerEnd?.Invoke(activatedTask);
+    }
+
+    
+    // This is what we call a "Coroutine", as indicated by the "yield return"
+    public void ResetClock()
+    {
+        isTimerTicking = false;
+        _secondsRemaining = _totalSeconds;
     }
 }

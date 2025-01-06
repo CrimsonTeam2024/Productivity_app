@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Timeline;
 
 
 
@@ -21,12 +22,9 @@ public class TasksController : ListController<Task, TaskData>
     // TODO: Implement
     public override void ActivateListItem(Task activatedTask)
     {
-        focusController.StartFocusTimer(activatedTask);
-        // Opens village manager view and prompts to select build tasks
-
-        // After selected, prompt to activate task
-
-        // If activate chosen, create focus session based on task data
+        focusController.gameObject.SetActive(true);
+        // Prepares focus session, further steps are handled by focus controller and ui
+        focusController.InitFocusSession(activatedTask);
     }
 
 
