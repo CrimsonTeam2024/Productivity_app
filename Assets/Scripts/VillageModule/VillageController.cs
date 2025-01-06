@@ -12,7 +12,8 @@ public class VillageController : MonoBehaviour
     void LateUpdate()
     {
         villageHealth = totalVillageHealth / (buildingCounter*100f);
-        totalVillageHealth = 0f;
+        totalVillageHealth = 1f;
+
 
         oracle.oracleSatisfaction = villageHealth;
     }
