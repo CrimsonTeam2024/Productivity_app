@@ -8,24 +8,13 @@ public class BuildingOracle : MonoBehaviour
 
     void Start()
     {
-        villageController = FindObjectOfType<VillageController>();
+        villageController = FindFirstObjectByType<VillageController>();
     }
 
     public void Update()
     {
         if (villageController == null)
             return;
-
-        // float total = villageController.totalVillageHealth;
-        // float health = villageController.villageHealth;
-        // // Avoid divide-by-zero for (totalVillageHealth == 0)
-
-        // if (total <= 0f)
-        // {
-        //     // Default image
-        //     ShowTreeAtIndex(4);
-        //     return;
-        // }
 
         // Otherwise, fraction-based
         float fraction = villageController.villageHealth;
