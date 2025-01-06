@@ -27,5 +27,6 @@ public class BuildingStats : MonoBehaviour
         currentHealthDisplay = (int)currentHealth;
 
         villageController.totalVillageHealth += currentHealth;
+        villageController.maxVillageHealth += maxHealth;
     }
 }

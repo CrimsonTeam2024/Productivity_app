@@ -53,6 +53,15 @@ public class CellController : MonoBehaviour, IPointerClickHandler, IPointerEnter
         // Ignore if occupied by bulding
         if (isOccupied)
         {
+            // Check if Oracle 'building' in Cell
+            var oracle = GetComponentInChildren<BuildingOracle>();
+            if (oracle != null)
+            {
+                Debug.Log(" - Oracle 'building', no overlay");
+                Debug.Log($""); // TODO Oracle cell print health details on click?
+                return;
+            }
+
             Debug.Log(" - Cell occupied");
             BuildingStats stats = GetComponentInChildren<BuildingStats>();
             if (stats != null)
