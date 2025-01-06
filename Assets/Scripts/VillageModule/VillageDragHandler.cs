@@ -54,7 +54,7 @@ public class VillageDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
             lastDragPosition = eventData.position;
 
             // Shifts anchor position of that transform
-            rectTransform.anchoredPosition += delta * Time.deltaTime * dragSpeed;
+            rectTransform.anchoredPosition += delta / Time.deltaTime * dragSpeed;
         }
     }
 
@@ -74,7 +74,7 @@ public class VillageDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         while (elapsedTime < inertiaDuration)
         {
-            rectTransform.anchoredPosition += currentDelta * Time.deltaTime * dragSpeed;
+            rectTransform.anchoredPosition += currentDelta / Time.deltaTime * dragSpeed;
             currentDelta = Vector2.Lerp(currentDelta, Vector2.zero, inertiaDampingFactor);
             elapsedTime += Time.deltaTime;
             yield return null;
