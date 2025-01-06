@@ -16,19 +16,19 @@ public class BuildingOracle : MonoBehaviour
         if (villageController == null)
             return;
 
-        float total = villageController.totalVillageHealth;
-        float health = villageController.villageHealth;
-        // Avoid divide-by-zero for (totalVillageHealth == 0)
+        // float total = villageController.totalVillageHealth;
+        // float health = villageController.villageHealth;
+        // // Avoid divide-by-zero for (totalVillageHealth == 0)
 
-        if (total <= 0f)
-        {
-            // Default image
-            ShowTreeAtIndex(4);
-            return;
-        }
+        // if (total <= 0f)
+        // {
+        //     // Default image
+        //     ShowTreeAtIndex(4);
+        //     return;
+        // }
 
         // Otherwise, fraction-based
-        float fraction = health / total;
+        float fraction = villageController.villageHealth;
         fraction = Mathf.Clamp01(fraction);
 
         int index = Mathf.FloorToInt(fraction * 5f);
