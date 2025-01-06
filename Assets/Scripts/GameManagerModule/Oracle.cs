@@ -21,28 +21,14 @@ public class Oracle : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.tasksCompleted != lastTasksCompleted)
-        {
-            lastTasksCompleted = (int)GameManager.Instance.tasksCompleted;
-            UpdateOracleSatisfaction();
-        }
-        else
-        {
-            oracleSatisfaction = 1f;
-        }
-
         UpdateOracleStats();   
     }
 
     public void UpdateOracleStats()
     {
         tasksCompletedText.text = GameManager.Instance.tasksCompleted.ToString();
-        focusTimeText.text = GameManager.Instance.focusTime.ToString();
+        uint focusSeconds = GameManager.Instance.focusTime;
+        focusTimeText.text = new Timer(focusSeconds).ToString(true);
         oracleSatisfactionText.text = oracleSatisfaction.ToString("P0");
-    }
-
-    public void UpdateOracleSatisfaction()
-    {
-        
     }
 }

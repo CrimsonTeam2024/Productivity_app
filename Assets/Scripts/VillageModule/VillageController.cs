@@ -7,9 +7,13 @@ public class VillageController : MonoBehaviour
     public float villageHealth;
     public int buildingCounter = 0;
 
+    [SerializeField] Oracle oracle;
+
     void LateUpdate()
     {
         villageHealth = totalVillageHealth / (buildingCounter*100f);
         totalVillageHealth = 0f;
+
+        oracle.oracleSatisfaction = villageHealth;
     }
 }
