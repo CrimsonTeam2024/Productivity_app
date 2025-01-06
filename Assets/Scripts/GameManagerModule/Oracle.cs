@@ -57,7 +57,8 @@ public class Oracle : MonoBehaviour
 
     void Update()
     {
-        UpdateOracleStats();   
+        UpdateOracleStats();
+        UpdateOracleMessages(oracleSatisfaction);
     }
 
     public void UpdateOracleStats()
@@ -88,6 +89,7 @@ public class Oracle : MonoBehaviour
         {
             selectedMessagePool = messagePools[3];
         }
+
         int i = 0;
         foreach (Button msgButton in oracleMessageButtons)
         {
