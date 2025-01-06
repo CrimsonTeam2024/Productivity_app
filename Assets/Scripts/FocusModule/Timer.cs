@@ -91,6 +91,13 @@ public class Timer
         return Hours.ToString() + " : " + Minutes.ToString() + " : " + Seconds.ToString();
     }
 
+    public string ToString(bool isPretty)
+    {
+        if (!isPretty)
+            return ToString();
+        return Hours.ToString() + "hrs " + Minutes.ToString() + "mins " + Seconds.ToString() + "secs";
+    }
+
     
     // This is what we call a "Coroutine", as indicated by the "yield return"
     public IEnumerator TimerTickDown(Task activatedTask)

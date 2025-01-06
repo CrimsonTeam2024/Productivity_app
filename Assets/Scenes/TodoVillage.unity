@@ -3656,6 +3656,7 @@ MonoBehaviour:
   totalVillageHealth: 1
   villageHealth: 1
   buildingCounter: 0
+  oracle: {fileID: 1709877359}
 --- !u!1 &684945402
 GameObject:
   m_ObjectHideFlags: 0
@@ -10828,7 +10829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 544, y: -0}
+  m_AnchoredPosition: {x: 544, y: 5}
   m_SizeDelta: {x: 921.3842, y: 123.335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933182662
@@ -10851,7 +10852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5hrs 35mins
+  m_text: 5hrs 35mins 20secs
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cee0f384e1357e44ca697b994fbdd00d, type: 2}
   m_sharedMaterial: {fileID: 4100293552657715086, guid: cee0f384e1357e44ca697b994fbdd00d, type: 2}
@@ -10894,7 +10895,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -10916,7 +10917,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 281.88034, y: -2.143677, z: 376.9182, w: 1.337269}
+  m_margin: {x: 281.88034, y: -2.143677, z: 258.9985, w: -76.29332}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
