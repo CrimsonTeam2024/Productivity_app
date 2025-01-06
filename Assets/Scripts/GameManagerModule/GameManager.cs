@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     public double xp;
     public uint coins;
 
+    // Stats for oracle
+    public uint tasksCompleted;
+    public uint rewardsCompleted;
+    public uint focusTime;
+
+
     public TextMeshProUGUI coinText;
 
     void Awake()
@@ -146,6 +152,9 @@ public class GameManager : MonoBehaviour
         // Update coins
         int coinChange = CalculateCoinChangeOnTaskCompletion(completedTask);
         UpdateCoins(coinChange);
+
+        focusTime += completedTask.TimeCost;
+        tasksCompleted++;
     }
 
 

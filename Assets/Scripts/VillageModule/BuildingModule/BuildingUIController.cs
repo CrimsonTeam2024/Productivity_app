@@ -21,7 +21,7 @@ public class BuildingInfoPanel : MonoBehaviour
         if (stats == null) return;
 
         // UI update
-        healthText.text = $"{stats.currentHealth} / {stats.maxHealth}";
+        healthText.text = $"{stats.currentHealthDisplay} / {stats.maxHealth}";
 
         gameObject.SetActive(true);
     }
